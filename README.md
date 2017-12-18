@@ -5,6 +5,7 @@ This module is written in typescript
 use this command to include node module
 ### npm i --save number_to_string
 
+Below the code for using in javascript file
 <code>
     var curNumberModule = require('number_to_string');
 
