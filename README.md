@@ -10,6 +10,7 @@ use this command to include node module
 <p>Below the code for using in javascript file</p>
 
 <code>
+
     var curNumberModule = require('number_to_string');
 
     var curValue = new curNumberModule.number_to_string(124563);
@@ -17,4 +18,8 @@ use this command to include node module
     var numString = curValue.get_string();
 
     console.log(numString);
+
 </code>
+
+
+
