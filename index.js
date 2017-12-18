@@ -1,3 +1,5 @@
+"use strict";
+exports.__esModule = true;
 var number_to_string = (function () {
     // constructor
     function number_to_string(cnumber) {
@@ -83,5 +85,4 @@ var number_to_string = (function () {
     };
     return number_to_string;
 }());
-var curvalue = new number_to_string(-91313523);
-console.log(curvalue.get_string());
+exports.number_to_string = number_to_string;

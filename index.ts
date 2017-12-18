@@ -1,4 +1,5 @@
-class number_to_string{
+
+export class number_to_string{
     private __number: number;
     private single_digits =['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
     
@@ -115,5 +116,4 @@ class number_to_string{
 
 }
 
-let curvalue = new number_to_string(-91313523);
-console.log(curvalue.get_string());
+
