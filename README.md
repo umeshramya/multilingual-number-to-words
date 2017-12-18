@@ -1,11 +1,11 @@
-# number_to_string
+<h1>number_to_string </h1>
 This converts to number in to words
 This module is written in typescript
-## How to use
+<h2> How to use </h2>
 use this command to include node module
-### npm i --save number_to_string
-
+<h3>npm i --save number_to_string <h3>
 Below the code for using in javascript file
+<br>
 <code>
     var curNumberModule = require('number_to_string');
 
