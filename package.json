@@ -1,0 +1,25 @@
+{
+  "name": "number_to_string",
+  "version": "1.0.0",
+  "description": "Converts Number to words",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umeshramya/number_to_string.git"
+  },
+  "keywords": [
+    "Number",
+    "words",
+    "string",
+    "accounts"
+  ],
+  "author": "Dr Umesh R Bilagi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/umeshramya/number_to_string/issues"
+  },
+  "homepage": "https://github.com/umeshramya/number_to_string#readme"
+}
