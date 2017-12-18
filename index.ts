@@ -37,6 +37,24 @@ class number_to_string{
 
         thousand = Math.floor(lNumber / Math.pow(10, 5));
         lNumber = cNumber - (thousand * Math.pow(10, 5));
+
+        
+    }
+
+    private get_hundreds_double_digits(__lNumber:number){
+        // this function returns the number from 999 to 1 in the form of words
+
+        if (__lNumber > 999){
+            throw new Error ('Invalid entry');
+        }
+        
+        if (__lNumber <1000 && __lNumber > 100){
+
+        }else if(__lNumber <= 100  && __lNumber > 20 ){
+
+        }else if(__lNumber <= 20 && __lNumber >= 10 ){
+
+        }else if ()
     }
 
 
