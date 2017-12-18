@@ -13,7 +13,7 @@ class number_to_string{
 
     // constructor
     public constructor(cnumber: number) {
-        this.__number = cnumber;
+        this.__number = Math.abs(cnumber);
 
     }
 
@@ -54,7 +54,11 @@ class number_to_string{
 
         }else if(__lNumber <= 20 && __lNumber >= 10 ){
 
-        }else if ()
+        }else if (__lNumber <10 && __lNumber > 0){
+
+        }else{
+            throw new Error ('Invalid entry');
+        }
     }
 
 
