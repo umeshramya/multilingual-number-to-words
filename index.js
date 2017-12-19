@@ -1,9 +1,9 @@
-// export default class number_to_string {'./index'};
 "use strict";
+// export default class number_to_string {'./index'};
 exports.__esModule = true;
 // declare let module :any
 // module.exports = 
-var number_to_string = (function () {
+var number_to_string = /** @class */ (function () {
     function number_to_string() {
         this.single_digits = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
         this.teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];

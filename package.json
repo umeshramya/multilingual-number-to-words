@@ -1,10 +1,12 @@
 {
   "name": "number_to_string",
-  "version": "2.0.0",
+  "version": "1.1.0",
   "description": "Converts Number to words",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start" : "tsc index.ts; tsc test_typescript_index.ts;", 
+    "test": "node test.index.js; node test_typescript_index.js;",
+    "prepublish": "npm tsc; npm test"
   },
   "repository": {
     "type": "git",

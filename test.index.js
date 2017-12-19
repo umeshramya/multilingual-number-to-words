@@ -10,3 +10,5 @@ console.log(firstString);
 var secondString = curValue.get_string(9130456456);// nine hundred thirteen crore  four lakh  fifty six thousand  four hundred fifty six
 console.log(secondString);
 
+
+
