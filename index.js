@@ -1,16 +1,19 @@
+// export default class number_to_string {'./index'};
 "use strict";
 exports.__esModule = true;
+// declare let module :any
+// module.exports = 
 var number_to_string = (function () {
-    // constructor
-    function number_to_string(cnumber) {
+    function number_to_string() {
         this.single_digits = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
         this.teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
         this.double_digits = ['zero', 'ten', 'twenty', 'thirty', 'fourty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninty'];
         this.word = '';
-        this.__number = Math.abs(cnumber);
+        this.word = '';
+        this.__number = 0;
     }
-    number_to_string.prototype.get_string = function () {
-        var cNumber = this.__number;
+    number_to_string.prototype.get_string = function (cNumber) {
+        this.__number = cNumber;
         var lNumber = cNumber;
         var crore;
         var lakh;
@@ -20,6 +23,7 @@ var number_to_string = (function () {
         var stThousand = '';
         var stHundredLess = '';
         // crores
+        this.word = '';
         crore = Math.floor(cNumber / Math.pow(10, 7));
         lNumber = lNumber - (crore * Math.pow(10, 7));
         if (crore > 0) {

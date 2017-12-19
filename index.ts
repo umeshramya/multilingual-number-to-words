@@ -1,5 +1,10 @@
 
-export class number_to_string{
+// export default class number_to_string {'./index'};
+
+
+// declare let module :any
+// module.exports = 
+ export class number_to_string{
     private __number: number;
     private single_digits =['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
     
@@ -8,14 +13,14 @@ export class number_to_string{
     private double_digits =  ['zero','ten', 'twenty', 'thirty', 'fourty', 'fifty','sixty', 'seventy', 'eighty', 'ninty' ];
     
     private word: string='';
-    // constructor
-    public constructor(cnumber: number) {
-        this.__number = Math.abs(cnumber);
 
+    public constructor(){
+        this.word = '';
+        this.__number = 0 ;
     }
 
-    public get_string() {
-        let cNumber = this.__number;
+    public get_string(cNumber:number) {
+        this.__number = cNumber;
         let lNumber: number = cNumber;
 
         let crore: number;
@@ -28,6 +33,7 @@ export class number_to_string{
         let stHundredLess:string = '';
 
         // crores
+        this.word ='';
         crore = Math.floor(cNumber / Math.pow(10, 7));
         lNumber = lNumber - (crore * Math.pow(10, 7));
         if (crore > 0){
@@ -54,19 +60,10 @@ export class number_to_string{
         // hundreds 
         this.word = ''; 
         if (lNumber > 0){
-            
             stHundredLess = this.get_hundreds_double_digits(lNumber);
-
         }
     
-
-
-
-        return stCrore + stLakh + stThousand + stHundredLess;
-
-
-
-        
+        return stCrore + stLakh + stThousand + stHundredLess;        
     }
 
     private get_hundreds_double_digits(__lNumber:number){

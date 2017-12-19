@@ -1,9 +1,12 @@
 var curNumberModule = require('./index.js');
 
-var curValue = new curNumberModule.number_to_string(124563);
+var curValue = new curNumberModule.number_to_string();
 
-var numString = curValue.get_string();
+// first value
+var firstString = curValue.get_string(3456);//three thousand  four hundred fifty six
+console.log(firstString);
 
-console.log(numString);
-
+// second value
+var secondString = curValue.get_string(9130456456);// nine hundred thirteen crore  four lakh  fifty six thousand  four hundred fifty six
+console.log(secondString);
 
