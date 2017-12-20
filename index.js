@@ -1,32 +1,23 @@
 "use strict";
-// export default class number_to_string {'./index'};
 exports.__esModule = true;
-// declare let module :any
-// module.exports = 
-var number_to_string = /** @class */ (function () {
-    function number_to_string() {
-        this.single_digits = [];
-        this.teens = [];
-        this.double_digits = [];
-        this.crore_lakhs = [];
+var moduleLanguage = require("./language");
+var number_to_string = (function () {
+    function number_to_string(curLanguage) {
+        if (curLanguage === void 0) { curLanguage = 'english'; }
         this.word = '';
-        // english
-        this.single_digits = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-        this.teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-        this.double_digits = ['zero', 'ten', 'twenty', 'thirty', 'fourty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
-        this.crore_lakhs = ['crore', 'lakh', 'thousand', 'hundred'];
-        // kananda 
-        this.single_digits = ['ಶೂನ್ಯ', 'ಒಂದು', 'ಎರಡು', 'ಮೂರು', 'ನಾಲ್ಕು', 'ಐದು', 'ಆರು', 'ಏಳು', 'ಎಂಟು', 'ಒಂಬತ್ತು'];
-        this.teens = ['ಹತ್ತು', 'ಹನ್ನೊಂದು', 'ಹನ್ನೆರಡು', 'ಹದಿಮೂರು', 'ಹದಿನಾಲ್ಕು', 'ಹದಿನೈದು', 'ಹದಿನಾರು', 'ಹದಿನೇಳು', 'ಹದಿನೆಂಟು', 'ಹತ್ತೊಂಬತ್ತು'];
-        this.double_digits = ['ಶೂನ್ಯ', 'ಹತ್ತು', 'ಇಪ್ಪತ್ತು', 'ಮೂವತ್ತು', 'ನಾಲ್ಕನೇ', 'ಐವತ್ತು', 'ಅರವತ್ತು ', 'ಎಪ್ಪತ್ತು', 'ಎಂಭತ್ತು', 'ತೊಂಬತ್ತು'];
-        this.crore_lakhs = ['ಕೋಟಿ', 'ಲಕ್ಷ', 'ಸಾವಿರ', 'ನೂರು'];
-        // telagu
-        this.single_digits = ['సున్నా', 'ఒక', 'రెండు', 'మూడు', 'నలుగురు', 'ఐదు', 'ఆరు', 'ఏడు', 'ఎనిమిది', 'తొమ్మిది'];
-        this.teens = ['పది', 'పదిహేను', 'పదమూడు', 'పదిహేను', 'పద్నాలుగు', 'పదిహేను', 'పదహారు', 'పదిహేడు', 'పద్దెనిమిది', 'పందొమ్మిది'];
-        this.double_digits = ['సున్నా', 'పది', 'ఇరవై', 'ముప్పై', 'ఫోర్టీ', 'యాభై', 'అరవై', 'డెబ్భై', 'ఎనభై', 'తొంభై'];
-        this.crore_lakhs = ['కోట్ల', 'లక్ష', 'వెయ్యి', 'వంద'];
-        this.word = '';
-        this.__number = 0;
+        var optLanguage = moduleLanguage.language[curLanguage];
+        if (optLanguage != null) {
+            this.single_digits = optLanguage.single_digits;
+            this.teens = optLanguage.teens;
+            this.double_digits = optLanguage.double_digits;
+            this.crore_lakhs = optLanguage.crore_lakhs;
+        }
+        else {
+            this.single_digits = curLanguage.single_digits;
+            this.teens = curLanguage.teens;
+            this.double_digits = curLanguage.double_digits;
+            this.crore_lakhs = curLanguage.crore_lakhs;
+        }
     }
     number_to_string.prototype.get_string = function (cNumber) {
         this.__number = cNumber;

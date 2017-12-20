@@ -6,7 +6,7 @@
   "scripts": {
     "start" : "tsc index.ts; tsc test_typescript_index.ts;", 
     "test": "node test.index.js; node test_typescript_index.js;",
-    "prepublish": "npm start; npm test"
+    "prepublish": "npm start; npm test;"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
     "accounts"
   ],
   "author": "Dr Umesh R Bilagi",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/umeshramya/number_to_string/issues"
   },
