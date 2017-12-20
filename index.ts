@@ -74,7 +74,7 @@ export class number_to_string{
             stHundredLess = this.get_hundreds_double_digits(lNumber);
         }
     
-        return stCrore + stLakh + stThousand + stHundredLess;        
+        return  stCrore + stLakh + stThousand + stHundredLess.trim();
     }
 
     private get_hundreds_double_digits(__lNumber:number){

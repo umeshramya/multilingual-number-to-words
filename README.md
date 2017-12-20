@@ -8,8 +8,8 @@ use this command to include node module
 
 <h3>npm i multilingual-number-to-words</h3>
 <hr>
-<h4>Below the code for using in Javascript file</h4>
-<code>
+<h4>Below the pre for using in Javascript file</h4>
+<pre>
     var curNumberModule = require("multilingual-number-to-words");
     var curValue = new curNumberModule.number_to_string("hindi");
 
@@ -41,12 +41,12 @@ use this command to include node module
     console.log(secondFrenchString);
 
 
-</code>
+</pre>
 
 <hr>
-<h4>Below the code for using in Typescript file</h4>
+<h4>Below the pre for using in Typescript file</h4>
 
-<code>
+<pre>
     import * as stringNumber from "./index";
     //to add new language for example french
     let french = {               
@@ -66,5 +66,5 @@ use this command to include node module
     // second value
     let secondString = curValue.get_string(9130456456);// nine hundred thirteen crore  four lakh  fifty six thousand  four hundred fifty six
     console.log(secondString);
-</code>
+</pre>
 

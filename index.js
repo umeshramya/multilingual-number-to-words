@@ -55,7 +55,7 @@ var number_to_string = /** @class */ (function () {
         if (lNumber > 0) {
             stHundredLess = this.get_hundreds_double_digits(lNumber);
         }
-        return stCrore + stLakh + stThousand + stHundredLess;
+        return stCrore + stLakh + stThousand + stHundredLess.trim();
     };
     number_to_string.prototype.get_hundreds_double_digits = function (__lNumber) {
         // this function returns the number from 999 to 1 in the form of words
