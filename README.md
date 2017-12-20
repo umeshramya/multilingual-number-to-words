@@ -21,16 +21,16 @@ use this command to include node module
     var secondString = curValue.get_string(9130456456);// nine hundred thirteen crore  four lakh  fifty six thousand  four hundred fifty six
     console.log(secondString);
 
-//How to add new language
-//declare language variables
+    //How to add new language
+    //declare language variables
     let french = {               
-                "single_digits" : ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"],
-                "teens"         : ["dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"],
-                "double_digits" :  ["zéro", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante-dix", "quatre-vingts", "quatre-vingt-dix" ],
-                "crore_lakhs"   : ["crore", "lakh", "mille", "cent"]
-            }
+        "single_digits" : ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"],
+        "teens"         : ["dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"],
+        "double_digits" :  ["zéro", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante-dix", "quatre-vingts", "quatre-vingt-dix" ],
+        "crore_lakhs"   : ["crore", "lakh", "mille", "cent"]
+    }
 
-        var curFrenchValue = new curNumberModule.number_to_string(french);
+     var curFrenchValue = new curNumberModule.number_to_string(french);
 
     // first value
     var firstFrenchString = curFrenchValue.get_string(3456);//three thousand  four hundred fifty six
@@ -50,11 +50,11 @@ use this command to include node module
     import * as stringNumber from "./index";
     //to add new language for example french
     let french = {               
-                "single_digits" : ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"],
-                "teens"         : ["dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"],
-                "double_digits" :  ["zéro", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante-dix", "quatre-vingts", "quatre-vingt-dix" ],
-                "crore_lakhs"   : ["crore", "lakh", "mille", "cent"]
-            }
+        "single_digits" : ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"],
+        "teens"         : ["dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"],
+        "double_digits" :  ["zéro", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante-dix", "quatre-vingts", "quatre-vingt-dix" ],
+        "crore_lakhs"   : ["crore", "lakh", "mille", "cent"]
+    }
 
 
     let curValue = new stringNumber.number_to_string(french);
