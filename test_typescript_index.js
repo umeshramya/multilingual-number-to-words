@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var stringNumber = require("./index");
-var curValue = new stringNumber.number_to_string('telagu');
+var curValue = new stringNumber.number_to_string('kananda');
 // first value
 var firstString = curValue.get_string(34562); //three thousand  four hundred fifty six
 console.log(firstString);
