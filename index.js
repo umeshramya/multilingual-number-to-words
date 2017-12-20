@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var moduleLanguage = require("./language");
-var number_to_string = (function () {
+var number_to_string = /** @class */ (function () {
     function number_to_string(curLanguage) {
         if (curLanguage === void 0) { curLanguage = 'english'; }
         this.word = '';

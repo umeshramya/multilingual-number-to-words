@@ -1,6 +1,6 @@
-<h1>number_to_string </h1>
+<h1>multilingual-number-to-words</h1>
 
-This converts to number in to words
+Converts to number in to words. one can get words written in any language. users can add there own language if not included
 This module is written in typescript
 
 <h2> How to use </h2>
