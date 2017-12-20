@@ -6,15 +6,38 @@
 // module.exports = 
  export class number_to_string{
     private __number: number;
-    private single_digits =['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
-    
-    private teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen','nineteen' ];
-    
-    private double_digits =  ['zero','ten', 'twenty', 'thirty', 'fourty', 'fifty','sixty', 'seventy', 'eighty', 'ninty' ];
-    
-    private word: string='';
 
+    private single_digits =[];
+    private teens = [];
+    private double_digits = [];
+    private crore_lakhs = [];
+
+  
+ 
+
+
+
+
+    private word: string='';
     public constructor(){
+         // english
+        this.single_digits =['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];    
+        this.teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen','nineteen' ];
+        this.double_digits =  ['zero','ten', 'twenty', 'thirty', 'fourty', 'fifty','sixty', 'seventy', 'eighty', 'ninety' ];
+        this.crore_lakhs = ['crore', 'lakh', 'thousand', 'hundred'];
+        // kananda 
+        this. single_digits=['ಶೂನ್ಯ', 'ಒಂದು', 'ಎರಡು', 'ಮೂರು', 'ನಾಲ್ಕು', 'ಐದು', 'ಆರು', 'ಏಳು', 'ಎಂಟು', 'ಒಂಬತ್ತು' ];
+        this. teens = ['ಹತ್ತು', 'ಹನ್ನೊಂದು', 'ಹನ್ನೆರಡು', 'ಹದಿಮೂರು', 'ಹದಿನಾಲ್ಕು', 'ಹದಿನೈದು', 'ಹದಿನಾರು', 'ಹದಿನೇಳು', 'ಹದಿನೆಂಟು', 'ಹತ್ತೊಂಬತ್ತು'];
+        this. double_digits = ['ಶೂನ್ಯ', 'ಹತ್ತು', 'ಇಪ್ಪತ್ತು', 'ಮೂವತ್ತು', 'ನಾಲ್ಕನೇ', 'ಐವತ್ತು', 'ಅರವತ್ತು ','ಎಪ್ಪತ್ತು','ಎಂಭತ್ತು','ತೊಂಬತ್ತು'];
+        this. crore_lakhs = ['ಕೋಟಿ', 'ಲಕ್ಷ', 'ಸಾವಿರ', 'ನೂರು'];
+
+        // telagu
+        this. single_digits=['సున్నా', 'ఒక', 'రెండు', 'మూడు', 'నలుగురు', 'ఐదు', 'ఆరు', 'ఏడు', 'ఎనిమిది', 'తొమ్మిది' ];
+        this. teens = ['పది', 'పదిహేను','పదమూడు','పదిహేను','పద్నాలుగు','పదిహేను', 'పదహారు', 'పదిహేడు', 'పద్దెనిమిది', 'పందొమ్మిది'];
+        this. double_digits = ['సున్నా', 'పది', 'ఇరవై', 'ముప్పై', 'ఫోర్టీ', 'యాభై', 'అరవై', 'డెబ్భై', 'ఎనభై', 'తొంభై'];
+        this. crore_lakhs = ['కోట్ల', 'లక్ష', 'వెయ్యి', 'వంద'];
+
+
         this.word = '';
         this.__number = 0 ;
     }
@@ -37,7 +60,7 @@
         crore = Math.floor(cNumber / Math.pow(10, 7));
         lNumber = lNumber - (crore * Math.pow(10, 7));
         if (crore > 0){
-            stCrore = this.get_hundreds_double_digits(crore) + " crore ";
+            stCrore = this.get_hundreds_double_digits(crore) + " " + this.crore_lakhs[0] + " ";
         }
 
         // // lakhs
@@ -45,7 +68,7 @@
         lakh = Math.floor(lNumber / Math.pow(10, 5));
         lNumber = lNumber - (lakh * Math.pow(10, 5));
         if (lakh > 0){
-            stLakh = this.get_hundreds_double_digits(lakh) + " lakh ";
+            stLakh = this.get_hundreds_double_digits(lakh) + " " + this.crore_lakhs[1] + " ";
         }
 
         // thousands
@@ -53,7 +76,7 @@
         thousand = Math.floor(lNumber / Math.pow(10, 3));        
         lNumber = lNumber - (thousand * Math.pow(10, 3));
         if(thousand > 0){
-            stThousand = this.get_hundreds_double_digits(thousand) + " thousand ";
+            stThousand = this.get_hundreds_double_digits(thousand) + " " + this.crore_lakhs[2] + " ";
         }
 
         
@@ -78,7 +101,7 @@
           // hundreads
             tNumber = Math.floor(__lNumber/100);
             __lNumber = __lNumber - (tNumber * 100);    
-            this.word += " " +  this.single_digits[tNumber] + " hundred";
+            this.word += " " +  this.single_digits[tNumber] + " " + this.crore_lakhs[3] ;
                         
             if (__lNumber > 0){
                 this.get_hundreds_double_digits(__lNumber);
