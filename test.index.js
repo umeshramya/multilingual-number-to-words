@@ -7,15 +7,18 @@ let french = {
     "crore_lakhs"   : ["crore", "lakh", "mille", "cent"]
 }
 
-var curValue = new curNumberModule.number_to_string(french);
+var curValue = new curNumberModule.number_to_string("english");
 
 // first value
-var firstString = curValue.get_string(3456);//trois mille  quatre cent cinquante six
+var firstString = curValue.get_string(3456.701);//trois mille  quatre cent cinquante six
 console.log(firstString);
 
-// second value
-var secondString = curValue.get_string(9130456456);// neuf cent treize crore  quatre lakh  cinquante six mille  quatre cent cinquante six
-console.log(secondString);
+var secondString = curValue.get_string(345678,true,true,curNumberModule.crore_or_millions.crore);
+
+
+// // second value
+// var secondString = curValue.get_string(9130456456);// neuf cent treize crore  quatre lakh  cinquante six mille  quatre cent cinquante six
+// console.log(secondString);
 
 
 

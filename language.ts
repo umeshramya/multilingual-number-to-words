@@ -6,7 +6,10 @@ export let language = {
                 "single_digits" : ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"],
                 "teens"         : ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen","nineteen" ],
                 "double_digits" :  ["zero","ten", "twenty", "thirty", "forty", "fifty","sixty", "seventy", "eighty", "ninety" ],
-                "crore_lakhs"   : ["crore", "lakh", "thousand", "hundred"]
+                "crore_lakhs"   : ["crore", "lakh", "thousand", "hundred"],
+                "million_billions" : ["quadrllion", "trillion", "billion", "million","thousand"],
+                "and_currency"  : ["and", "rupees", "paise"]
+
             },
 
     "kananda" : {
