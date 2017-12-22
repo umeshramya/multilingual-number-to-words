@@ -7,6 +7,7 @@ This module is written in typescript
 use this command to include node module
 
 <h3>npm i multilingual-number-to-words</h3>
+
 <hr>
 <h4>Below the pre for using in Javascript file</h4>
 <pre>
