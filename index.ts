@@ -68,11 +68,30 @@ export class number_to_string {
 
     }
 
+    public get_string_in_millions_and_billions(cNumber:number,   
+                    decimal_in_curancy_style:boolean=true, currency:boolean = false){
+        /*
+        This returns number in words in millions and billions format
+        */ 
+
+        return this.get_string(cNumber, decimal_in_curancy_style, currency, crore_or_millions.million );
+    }
+
+    public get_string_in_lakhs_and_crore(cNumber:number,   
+                    decimal_in_curancy_style:boolean=true, currency:boolean = false){
+        /*
+        This returns number in words in lakhs  and format format
+
+        */
+        return this.get_string(cNumber, decimal_in_curancy_style, currency, crore_or_millions.crore );
+    }
 
 
     public get_string(cNumber:number,   
                     decimal_in_curancy_style:boolean=true, currency:boolean = false,
                     __crore_or_millions : crore_or_millions = crore_or_millions.crore){
+    
+
         this.__number = cNumber;//setting class wide __number
         cNumber = Math.abs(cNumber);// converts the local var to positive value
         let wholeInteger = Math.floor(cNumber); //extracting whole number
@@ -104,7 +123,9 @@ export class number_to_string {
                 stDecimal= this.   convert_to_string_crore_lakhs(decimal).trim();
             }else if(__crore_or_millions == crore_or_millions.million){
                 //call for milions and billions format
+                
                 stDecimal = this.convert_to_string_billions_millions(decimal).trim();//gets the whole number in words
+
             }else{
                 // if not throw error
                 throw new Error("invalid crore or million choice");
@@ -121,7 +142,10 @@ export class number_to_string {
 
     }
 
-    private convert_to_string_crore_lakhs(cNumber:number) {        
+    private convert_to_string_crore_lakhs(cNumber:number) { 
+        /*
+            convert string into word in lakhs and crore format
+        */    
         let lNumber: number = cNumber;
         
 
@@ -133,7 +157,10 @@ export class number_to_string {
         let stLakh:string = '';
         let stThousand:string = '';
         let stHundredLess:string = '';
-
+        
+        if (lNumber > 9999999999){
+            throw new Error("The number is too large to handle");
+        }
         // crores
         this.word ='';
         crore = Math.floor(cNumber / Math.pow(10, 7));
@@ -170,9 +197,74 @@ export class number_to_string {
 
 
     private convert_to_string_billions_millions(cNumber:number){
+        /*
+            converts the number in to words in million and billion format
+        */ 
+        let lNumber: number = cNumber;
 
+        if (lNumber > 99999999999999){
+            throw new Error("Number is too large to handle");
+        }
 
-        return this.word
+        let quadrillion:number;
+        let trillion:number;
+        let billion:number;
+        let million: number;
+        let thousand: number;
+
+        let stQuadrillion:string='';
+        let stTrillion:string ='';
+        let stBillion:string ='';
+        let stMillion:string ='';
+        let stThousand:string = '';
+        let stHundredLess:string = '';
+
+        // quadrllion
+        this.word = ''; 
+        quadrillion = Math.floor(lNumber / Math.pow(10, 15));
+        lNumber = lNumber - (quadrillion * Math.pow(10, 15));
+        if (quadrillion > 0){
+            stQuadrillion = this.get_hundreds_double_digits(quadrillion) + " " + this.million_billions[0] + " ";
+        }
+
+        // trillion
+        this.word = ''; 
+        trillion = Math.floor(lNumber / Math.pow(10, 12));
+        lNumber = lNumber - (trillion * Math.pow(10, 12));
+        if (trillion > 0){
+            stTrillion = this.get_hundreds_double_digits(trillion) + " " + this.million_billions[1] + " ";
+        }
+        
+        // billions
+        this.word = ''; 
+        billion = Math.floor(lNumber / Math.pow(10, 9));
+        lNumber = lNumber - (billion * Math.pow(10, 9));
+        if (billion > 0){
+            stBillion = this.get_hundreds_double_digits(billion) + " " + this.million_billions[2] + " ";
+        }
+
+        //million
+        this.word = ''; 
+        million = Math.floor(lNumber / Math.pow(10, 6));
+        lNumber = lNumber - (million * Math.pow(10, 6));
+        if (million > 0){
+            stMillion = this.get_hundreds_double_digits(million) + " " + this.million_billions[3] + " ";
+        }
+
+        // thousands
+        this.word = ''; 
+        thousand = Math.floor(lNumber / Math.pow(10, 3));        
+        lNumber = lNumber - (thousand * Math.pow(10, 3));
+        if(thousand > 0){
+            stThousand = this.get_hundreds_double_digits(thousand) + " " + this.million_billions[4] + " ";
+        }
+
+        // hundreds 
+        this.word = ''; 
+        if (lNumber > 0){
+            stHundredLess = this.get_hundreds_double_digits(lNumber);
+        }
+        return stQuadrillion + stTrillion + stBillion + stMillion + stThousand + stHundredLess.trim();
 
     }
 

@@ -34,6 +34,23 @@ var number_to_string = (function () {
             this.and_currency = curLanguage.and_currency;
         }
     }
+    number_to_string.prototype.get_string_in_millions_and_billions = function (cNumber, decimal_in_curancy_style, currency) {
+        /*
+        This returns number in words in millions and billions format
+        */
+        if (decimal_in_curancy_style === void 0) { decimal_in_curancy_style = true; }
+        if (currency === void 0) { currency = false; }
+        return this.get_string(cNumber, decimal_in_curancy_style, currency, crore_or_millions.million);
+    };
+    number_to_string.prototype.get_string_in_lakhs_and_crore = function (cNumber, decimal_in_curancy_style, currency) {
+        if (decimal_in_curancy_style === void 0) { decimal_in_curancy_style = true; }
+        if (currency === void 0) { currency = false; }
+        /*
+        This returns number in words in lakhs  and format format
+
+        */
+        return this.get_string(cNumber, decimal_in_curancy_style, currency, crore_or_millions.crore);
+    };
     number_to_string.prototype.get_string = function (cNumber, decimal_in_curancy_style, currency, __crore_or_millions) {
         if (decimal_in_curancy_style === void 0) { decimal_in_curancy_style = true; }
         if (currency === void 0) { currency = false; }
@@ -81,6 +98,9 @@ var number_to_string = (function () {
         return this.and_currency[1] + " " + stwholeInteger + " " + this.and_currency[0] + " " + stDecimal + " " + this.and_currency[2];
     };
     number_to_string.prototype.convert_to_string_crore_lakhs = function (cNumber) {
+        /*
+            convert string into word in lakhs and crore format
+        */
         var lNumber = cNumber;
         var crore;
         var lakh;
@@ -118,7 +138,65 @@ var number_to_string = (function () {
         return stCrore + stLakh + stThousand + stHundredLess.trim();
     };
     number_to_string.prototype.convert_to_string_billions_millions = function (cNumber) {
-        return this.word;
+        /*
+            converts the number in to words in million and billion format
+        */
+        var lNumber = cNumber;
+        if (lNumber > 99999999999999) {
+            throw new Error("Number is too large to handle");
+        }
+        var quadrillion;
+        var trillion;
+        var billion;
+        var million;
+        var thousand;
+        var stQuadrillion = '';
+        var stTrillion = '';
+        var stBillion = '';
+        var stMillion = '';
+        var stThousand = '';
+        var stHundredLess = '';
+        // quadrllion
+        this.word = '';
+        quadrillion = Math.floor(lNumber / Math.pow(10, 15));
+        lNumber = lNumber - (quadrillion * Math.pow(10, 15));
+        if (quadrillion > 0) {
+            stQuadrillion = this.get_hundreds_double_digits(quadrillion) + " " + this.million_billions[0] + " ";
+        }
+        // trillion
+        this.word = '';
+        trillion = Math.floor(lNumber / Math.pow(10, 12));
+        lNumber = lNumber - (trillion * Math.pow(10, 12));
+        if (trillion > 0) {
+            stTrillion = this.get_hundreds_double_digits(trillion) + " " + this.million_billions[1] + " ";
+        }
+        // billions
+        this.word = '';
+        billion = Math.floor(lNumber / Math.pow(10, 9));
+        lNumber = lNumber - (billion * Math.pow(10, 9));
+        if (billion > 0) {
+            stBillion = this.get_hundreds_double_digits(billion) + " " + this.million_billions[2] + " ";
+        }
+        //million
+        this.word = '';
+        million = Math.floor(lNumber / Math.pow(10, 6));
+        lNumber = lNumber - (million * Math.pow(10, 6));
+        if (million > 0) {
+            stMillion = this.get_hundreds_double_digits(million) + " " + this.million_billions[3] + " ";
+        }
+        // thousands
+        this.word = '';
+        thousand = Math.floor(lNumber / Math.pow(10, 3));
+        lNumber = lNumber - (thousand * Math.pow(10, 3));
+        if (thousand > 0) {
+            stThousand = this.get_hundreds_double_digits(thousand) + " " + this.million_billions[4] + " ";
+        }
+        // hundreds 
+        this.word = '';
+        if (lNumber > 0) {
+            stHundredLess = this.get_hundreds_double_digits(lNumber);
+        }
+        return stQuadrillion + stTrillion + stBillion + stMillion + stThousand + stHundredLess.trim();
     };
     number_to_string.prototype.get_hundreds_double_digits = function (__lNumber) {
         // this function returns the number from 999 to 1 in the form of words
