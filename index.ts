@@ -95,12 +95,12 @@ export class number_to_string {
         this.__number = cNumber;//setting class wide __number
         cNumber = Math.abs(cNumber);// converts the local var to positive value
         let wholeInteger = Math.floor(cNumber); //extracting whole number
-        let stwholeInteger:string; //this value stores in words part of whole number
+        let stWholeInteger:string; //this value stores in words part of whole number
 
         if (__crore_or_millions == crore_or_millions.crore){
-            stwholeInteger = this.   convert_to_string_crore_lakhs(wholeInteger).trim();//gets the whole number in words
+            stWholeInteger = this.   convert_to_string_crore_lakhs(wholeInteger).trim();//gets the whole number in words
         }else if(__crore_or_millions == crore_or_millions.million){
-            stwholeInteger = this.   convert_to_string_billions_millions(wholeInteger).trim();//gets the whole number in words
+            stWholeInteger = this.   convert_to_string_billions_millions(wholeInteger).trim();//gets the whole number in words
         }else{
             throw new Error("invalid crore or million choice");
         }
@@ -136,9 +136,15 @@ export class number_to_string {
             stDecimal = ""
         }
 
-        return this.and_currency[1] + " " + stwholeInteger + " " + this.and_currency[0]+" "  + stDecimal + " "+ this.and_currency[2];
-        
-        
+
+
+        // this check this currency prefix and suffix to added or not 
+        // if true i adds else not and returns
+        if (currency){
+            return this.and_currency[1] + " " + stWholeInteger + " " + this.and_currency[0]+" "  + stDecimal + " "+ this.and_currency[2];
+        }else{
+            return  stWholeInteger + " " + this.and_currency[0]+" "  + stDecimal;
+        }
 
     }
 

@@ -58,12 +58,12 @@ var number_to_string = (function () {
         this.__number = cNumber; //setting class wide __number
         cNumber = Math.abs(cNumber); // converts the local var to positive value
         var wholeInteger = Math.floor(cNumber); //extracting whole number
-        var stwholeInteger; //this value stores in words part of whole number
+        var stWholeInteger; //this value stores in words part of whole number
         if (__crore_or_millions == crore_or_millions.crore) {
-            stwholeInteger = this.convert_to_string_crore_lakhs(wholeInteger).trim(); //gets the whole number in words
+            stWholeInteger = this.convert_to_string_crore_lakhs(wholeInteger).trim(); //gets the whole number in words
         }
         else if (__crore_or_millions == crore_or_millions.million) {
-            stwholeInteger = this.convert_to_string_billions_millions(wholeInteger).trim(); //gets the whole number in words
+            stWholeInteger = this.convert_to_string_billions_millions(wholeInteger).trim(); //gets the whole number in words
         }
         else {
             throw new Error("invalid crore or million choice");
@@ -95,7 +95,14 @@ var number_to_string = (function () {
             // code for returning decimal values in decimal style
             stDecimal = "";
         }
-        return this.and_currency[1] + " " + stwholeInteger + " " + this.and_currency[0] + " " + stDecimal + " " + this.and_currency[2];
+        // this check this currency prefix and suffix to added or not 
+        // if true i adds else not and returns
+        if (currency) {
+            return this.and_currency[1] + " " + stWholeInteger + " " + this.and_currency[0] + " " + stDecimal + " " + this.and_currency[2];
+        }
+        else {
+            return stWholeInteger + " " + this.and_currency[0] + " " + stDecimal;
+        }
     };
     number_to_string.prototype.convert_to_string_crore_lakhs = function (cNumber) {
         /*
@@ -109,6 +116,9 @@ var number_to_string = (function () {
         var stLakh = '';
         var stThousand = '';
         var stHundredLess = '';
+        if (lNumber > 9999999999) {
+            throw new Error("The number is too large to handle");
+        }
         // crores
         this.word = '';
         crore = Math.floor(cNumber / Math.pow(10, 7));
