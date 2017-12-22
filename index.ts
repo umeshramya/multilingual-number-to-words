@@ -136,8 +136,6 @@ export class number_to_string {
             stDecimal = ""
         }
 
-
-
         // this check this currency prefix and suffix to added or not 
         // if true i adds else not and returns
         if (currency){
