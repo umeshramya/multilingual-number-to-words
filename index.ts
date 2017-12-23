@@ -19,7 +19,9 @@ export class number_to_string {
                     "single_digits" : ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"],
                     "teens"         : ["dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"],
                     "double_digits" : ["zéro", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante-dix", "quatre-vingts", "quatre-vingt-dix" ],
-                    "crore_lakhs"   : ["crore", "lakh", "mille", "cent"]
+                    "crore_lakhs"   : ["crore", "lakh", "mille", "cent"],
+                    "million_billions" : ["quadrillion", "trillion", "billion", "million","thousand"],
+                    "and_currency"  : ["and", "rupees", "paise"]
                     }
         check test.index.js file
 
@@ -34,36 +36,32 @@ export class number_to_string {
     private and_currency:string[]       // this contains  array of "and", "whole number currency", "decimal part currency"
     private word: string='';            // this is retun word of numbers 
 
-    
-
-    
-
 
     public constructor(curLanguage:any = 'english'){
         /*
             This is constructor fucntion 
             Defualt language is english
         */ 
-    let optLanguage = moduleLanguage.language[curLanguage];
-    
-    // checking optLanguage 
-    // setting the single_digits double_digits , teen crore_lakhs
-    if(optLanguage != null){
-        this.single_digits  = optLanguage.single_digits;
-        this.teens          = optLanguage.teens;
-        this.double_digits  = optLanguage.double_digits;
-        this.crore_lakhs    = optLanguage.crore_lakhs;
-        this.million_billions = optLanguage.million_billions;
-        this.and_currency     = optLanguage.and_currency;
+        let optLanguage = moduleLanguage.language[curLanguage];
+        
+        // checking optLanguage 
+        // setting the single_digits double_digits , teen crore_lakhs
+        if(optLanguage != null){
+            this.single_digits  = optLanguage.single_digits;
+            this.teens          = optLanguage.teens;
+            this.double_digits  = optLanguage.double_digits;
+            this.crore_lakhs    = optLanguage.crore_lakhs;
+            this.million_billions = optLanguage.million_billions;
+            this.and_currency     = optLanguage.and_currency;
 
-    }else{
-        this.single_digits  = curLanguage.single_digits;
-        this.teens          = curLanguage.teens;
-        this.double_digits  = curLanguage.double_digits;
-        this.crore_lakhs    = curLanguage.crore_lakhs;
-        this.million_billions = curLanguage.million_billions;
-        this.and_currency     = curLanguage.and_currency;
-    }
+        }else{
+            this.single_digits  = curLanguage.single_digits;
+            this.teens          = curLanguage.teens;
+            this.double_digits  = curLanguage.double_digits;
+            this.crore_lakhs    = curLanguage.crore_lakhs;
+            this.million_billions = curLanguage.million_billions;
+            this.and_currency     = curLanguage.and_currency;
+        }
 
 
     }
@@ -72,6 +70,9 @@ export class number_to_string {
                     decimal_in_curancy_style:boolean=true, currency:boolean = false){
         /*
         This returns number in words in millions and billions format
+        cNumber :- this is number to written in words
+        decimal_in_curancy_style :- example decimal value `0.45` if set to `true` it will write as `and forty five` and false `point four five`
+        currency :- true means it will add currency prefix and suffix
         */ 
 
         return this.get_string(cNumber, decimal_in_curancy_style, currency, crore_or_millions.million );
@@ -81,6 +82,9 @@ export class number_to_string {
                     decimal_in_curancy_style:boolean=true, currency:boolean = false){
         /*
         This returns number in words in lakhs  and format format
+        cNumber :- this is number to written in words
+        decimal_in_curancy_style :- example decimal value `0.45` if set to `true` it will write as `and forty five` and false `point four five`
+        currency :- true means it will add currency prefix and suffix
 
         */
         return this.get_string(cNumber, decimal_in_curancy_style, currency, crore_or_millions.crore );
@@ -90,8 +94,14 @@ export class number_to_string {
     public get_string(cNumber:number,   
                     decimal_in_curancy_style:boolean=true, currency:boolean = false,
                     __crore_or_millions : crore_or_millions = crore_or_millions.crore){
+    /*
+        this function common functon for million and crores
+        cNumber :- this is number to written in words
+        decimal_in_curancy_style :- example decimal value `0.45` if set to `true` it will write as `and forty five` and false `point four five`
+        currency :- true means it will add currency prefix and suffix
+        crore_or_millions : this enum objet if set crore_or_millions.crore retund words in words and for crore_or_millions.millons returns in millons
     
-
+    */ 
         this.__number = cNumber;//setting class wide __number
         cNumber = Math.abs(cNumber);// converts the local var to positive value
         let wholeInteger = Math.floor(cNumber); //extracting whole number
@@ -133,16 +143,71 @@ export class number_to_string {
 
         }else{
             // code for returning decimal values in decimal style
-            stDecimal = ""
+            decimal_float =  parseFloat((cNumber - wholeInteger).toFixed(10));
+            stDecimal = this.non_currency_decimal(decimal_float)
         }
 
         // this check this currency prefix and suffix to added or not 
+        let curStWholeNumber:string="";
+        let curStDecimal:string ="";
+        
         // if true i adds else not and returns
         if (currency){
-            return this.and_currency[1] + " " + stWholeInteger + " " + this.and_currency[0]+" "  + stDecimal + " "+ this.and_currency[2];
+
+            if(stWholeInteger.trim() !="" ){
+                curStWholeNumber = this.and_currency[1] + " " + stWholeInteger.trim();
+            }
+
+            if (stDecimal.trim() != ""){
+                curStDecimal = this.and_currency[0]+" "  + stDecimal + " "+ this.and_currency[2].trim();
+            }
+
+
+            
         }else{
-            return  stWholeInteger + " " + this.and_currency[0]+" "  + stDecimal;
+
+
+            if(stWholeInteger.trim() !="" ){
+                curStWholeNumber = stWholeInteger.trim();
+            }
+
+            if (stDecimal.trim() != ""){
+                curStDecimal = this.and_currency[0]+" "  + stDecimal;
+            }
+            
         }
+
+        return (curStWholeNumber + " " + curStDecimal).trim();
+
+    }
+
+    private non_currency_decimal(decimal:number){
+        /*
+            this functions converts decimal values into words with single digits
+            for example 0.45678 will be outputed as `point four five six seven, eight`
+        */ 
+        let stDecimalNum = decimal.toString();
+        let indDigits:string=""; //this var store single digits in string
+        let stDecimal:string='';// whole decimal in number
+
+        
+        for (var index = 0; index < stDecimalNum.length; index++) {
+            // var element = array[index];
+        
+            if(index !=0){//to_string() adds 0 at before point to avoid it
+                indDigits = stDecimalNum[index];
+                if(indDigits == "."){
+                stDecimal += this.and_currency[3];//here language specific words has to be added by variable
+                }else{
+                    // stDecimal += " " + this.single_digits[] //number in words has be added
+                    stDecimal += " " +  this.single_digits[parseInt(indDigits) ]   //number in words has be added
+                }
+            }
+            
+        }
+            
+            
+        return stDecimal;
 
     }
 

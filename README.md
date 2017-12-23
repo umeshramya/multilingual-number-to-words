@@ -3,6 +3,9 @@
 Converts to number in to words. one can get words written in any language. users can add there own language if not included
 This module is written in typescript
 
+## Contributors
+-Dr Umesh R Bilagi <umeshbilagi@gmail.com>
+
 ## How to use
 use this command to include node module
 

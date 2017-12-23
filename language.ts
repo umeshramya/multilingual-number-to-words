@@ -8,7 +8,7 @@ export let language = {
                 "double_digits" :  ["zero","ten", "twenty", "thirty", "forty", "fifty","sixty", "seventy", "eighty", "ninety" ],
                 "crore_lakhs"   : ["crore", "lakh", "thousand", "hundred"],
                 "million_billions" : ["quadrillion", "trillion", "billion", "million","thousand"],
-                "and_currency"  : ["and", "rupees", "paise"]
+                "and_currency"  : ["and", "rupees", "paise", "point"]
 
             },
 
@@ -18,7 +18,7 @@ export let language = {
                 "double_digits" : ["ಶೂನ್ಯ", "ಹತ್ತು", "ಇಪ್ಪತ್ತು", "ಮೂವತ್ತು", "ನಲವತ್ತು", "ಐವತ್ತು", "ಅರವತ್ತು ","ಎಪ್ಪತ್ತು","ಎಂಭತ್ತು","ತೊಂಬತ್ತು"],
                 "crore_lakhs"   : ["ಕೋಟಿ", "ಲಕ್ಷ", "ಸಾವಿರ", "ನೂರು"],
                 "million_billions" : ["ಕ್ವಾಡ್ರಿಲಿಯನ್", "ಟ್ರಿಲಿಯನ್", "ಬಿಲಿಯನ್", "ಮಿಲಿಯನ್", "ಸಾವಿರ"],
-                "and_currency"  : ["ಮತ್ತು", "ರೂಪಾಯಿ", "ಪೈಸೆ"]
+                "and_currency"  : ["ಮತ್ತು", "ರೂಪಾಯಿ", "ಪೈಸೆ", "ಪಾಯಿಂಟ್"]
 
             },
     "telagu" : {
@@ -27,7 +27,7 @@ export let language = {
                 "double_digits" : ["సున్నా", "పది", "ఇరవై", "ముప్పై", "నలభై", "యాభై", "అరవై", "డెబ్భై", "ఎనభై", "తొంభై"],
                 "crore_lakhs"   : ["కోట్ల", "లక్ష", "వెయ్యి", "వంద"],
                 "million_billions" : ["క్వాడ్రిలియన్", "ట్రిలియన్", "బిలియన్", "మిలియన్", "వెయ్యి"],
-                "and_currency"  : ["మరియు", "రూపాయలు", "పైజ్"]
+                "and_currency"  : ["మరియు", "రూపాయలు", "పైజ్", "పాయింట్"]
             },
     
     "hindi" : {
@@ -36,7 +36,7 @@ export let language = {
                 "double_digits" :  ["शून्य", "दस", "बीस", "तीस", "चालीस", "पचास", "साठ", "सत्तर", "अस्सी", "नब्बे" ],
                 "crore_lakhs"   : ["करोड़", "लाख", "हजार", "सौ"],
                 "million_billions" : ["क्वाड्रलियन", "ट्रिलियन", "बिलियन", "मिलियन", "हजार"],
-                "and_currency"  : ["और", "रुपए", "पैसे"]
+                "and_currency"  : ["और", "रुपए", "पैसे", "बिंदु"]
             },
 
 
@@ -46,7 +46,7 @@ export let language = {
                 "double_digits" :  ["शंभरा", "दहा", "वीस", "तीस", "चाळीस", "पन्नास", "साठ", "सत्तर", "अस्सी", "नब्बे" ],
                 "crore_lakhs"   : ["कोटी", "लाख", "हजार", "सौ"],
                 "million_billions" : ["क्वाड्रलियन", "ट्रिलियन", "बिलियन", "मिलियन", "हजार"],
-                "and_currency"  : ["आणि", "रुपया", "पैसे"]
+                "and_currency"  : ["आणि", "रुपया", "पैसे", "बिंदू"]
             }
 
 }

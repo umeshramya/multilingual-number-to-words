@@ -37,6 +37,9 @@ var number_to_string = (function () {
     number_to_string.prototype.get_string_in_millions_and_billions = function (cNumber, decimal_in_curancy_style, currency) {
         /*
         This returns number in words in millions and billions format
+        cNumber :- this is number to written in words
+        decimal_in_curancy_style :- example decimal value `0.45` if set to `true` it will write as `and forty five` and false `point four five`
+        currency :- true means it will add currency prefix and suffix
         */
         if (decimal_in_curancy_style === void 0) { decimal_in_curancy_style = true; }
         if (currency === void 0) { currency = false; }
@@ -47,6 +50,9 @@ var number_to_string = (function () {
         if (currency === void 0) { currency = false; }
         /*
         This returns number in words in lakhs  and format format
+        cNumber :- this is number to written in words
+        decimal_in_curancy_style :- example decimal value `0.45` if set to `true` it will write as `and forty five` and false `point four five`
+        currency :- true means it will add currency prefix and suffix
 
         */
         return this.get_string(cNumber, decimal_in_curancy_style, currency, crore_or_millions.crore);
@@ -55,6 +61,14 @@ var number_to_string = (function () {
         if (decimal_in_curancy_style === void 0) { decimal_in_curancy_style = true; }
         if (currency === void 0) { currency = false; }
         if (__crore_or_millions === void 0) { __crore_or_millions = crore_or_millions.crore; }
+        /*
+            this function common functon for million and crores
+            cNumber :- this is number to written in words
+            decimal_in_curancy_style :- example decimal value `0.45` if set to `true` it will write as `and forty five` and false `point four five`
+            currency :- true means it will add currency prefix and suffix
+            crore_or_millions : this enum objet if set crore_or_millions.crore retund words in words and for crore_or_millions.millons returns in millons
+        
+        */
         this.__number = cNumber; //setting class wide __number
         cNumber = Math.abs(cNumber); // converts the local var to positive value
         var wholeInteger = Math.floor(cNumber); //extracting whole number
@@ -93,16 +107,53 @@ var number_to_string = (function () {
         }
         else {
             // code for returning decimal values in decimal style
-            stDecimal = "";
+            decimal_float = parseFloat((cNumber - wholeInteger).toFixed(10));
+            stDecimal = this.non_currency_decimal(decimal_float);
         }
         // this check this currency prefix and suffix to added or not 
+        var curStWholeNumber = "";
+        var curStDecimal = "";
         // if true i adds else not and returns
         if (currency) {
-            return this.and_currency[1] + " " + stWholeInteger + " " + this.and_currency[0] + " " + stDecimal + " " + this.and_currency[2];
+            if (stWholeInteger.trim() != "") {
+                curStWholeNumber = this.and_currency[1] + " " + stWholeInteger.trim();
+            }
+            if (stDecimal.trim() != "") {
+                curStDecimal = this.and_currency[0] + " " + stDecimal + " " + this.and_currency[2].trim();
+            }
         }
         else {
-            return stWholeInteger + " " + this.and_currency[0] + " " + stDecimal;
+            if (stWholeInteger.trim() != "") {
+                curStWholeNumber = stWholeInteger.trim();
+            }
+            if (stDecimal.trim() != "") {
+                curStDecimal = this.and_currency[0] + " " + stDecimal;
+            }
         }
+        return (curStWholeNumber + " " + curStDecimal).trim();
+    };
+    number_to_string.prototype.non_currency_decimal = function (decimal) {
+        /*
+            this functions converts decimal values into words with single digits
+            for example 0.45678 will be outputed as `point four five six seven, eight`
+        */
+        var stDecimalNum = decimal.toString();
+        var indDigits = ""; //this var store single digits in string
+        var stDecimal = ''; // whole decimal in number
+        for (var index = 0; index < stDecimalNum.length; index++) {
+            // var element = array[index];
+            if (index != 0) {
+                indDigits = stDecimalNum[index];
+                if (indDigits == ".") {
+                    stDecimal += this.and_currency[3]; //here language specific words has to be added by variable
+                }
+                else {
+                    // stDecimal += " " + this.single_digits[] //number in words has be added
+                    stDecimal += " " + this.single_digits[parseInt(indDigits)]; //number in words has be added
+                }
+            }
+        }
+        return stDecimal;
     };
     number_to_string.prototype.convert_to_string_crore_lakhs = function (cNumber) {
         /*

@@ -10,7 +10,7 @@ let french = {
 var curValue = new curNumberModule.number_to_string("english");
 
 // first value
-var firstString = curValue.get_string_in_millions_and_billions(0.7014,false,true);//trois mille  quatre cent cinquante six
+var firstString = curValue.get_string_in_millions_and_billions(23.70346666666,false,false);//trois mille  quatre cent cinquante six
 console.log(firstString);
 
 var secondString = curValue.get_string(345678,true,true,curNumberModule.crore_or_millions.crore);
