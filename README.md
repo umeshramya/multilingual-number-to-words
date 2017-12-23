@@ -68,33 +68,33 @@ console.log(secondString);
 ### Below the code for using in Typescript file
 
 ```
-    import * as stringNumber from "./index";
-    //to add new language for example french
-    let french = {               
-        "single_digits" : ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"],
-        "teens"         : ["dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"],
-        "double_digits" :  ["zéro", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante-dix", "quatre-vingts", "quatre-vingt-dix" ],
-        "crore_lakhs"   : ["crore", "lakh", "mille", "cent"]
-    }
+import * as stringNumber from "./index";
+//to add new language for example french
+let french = {               
+    "single_digits" : ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"],
+    "teens"         : ["dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"],
+    "double_digits" :  ["zéro", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante-dix", "quatre-vingts", "quatre-vingt-dix" ],
+    "crore_lakhs"   : ["crore", "lakh", "mille", "cent"]
+}
 
 
-    let curValue = new stringNumber.number_to_string(french);
+let curValue = new stringNumber.number_to_string(french);
 
-    // first value
-    let firstString = curValue.get_string(3456);//three thousand  four hundred fifty six
-    console.log(firstString);
+// first value
+let firstString = curValue.get_string(3456);//three thousand  four hundred fifty six
+console.log(firstString);
 
-    // second value
-    let secondString = curValue.get_string(9130456456);// nine hundred thirteen crore  four lakh  fifty six thousand  four hundred fifty six
-    console.log(secondString);
+// second value
+let secondString = curValue.get_string(9130456456);// nine hundred thirteen crore  four lakh  fifty six thousand  four hundred fifty six
+console.log(secondString);
 
 ```
 
-## How add languages to this
+## How add languages to this project
 
 Make fork and add language  send pull request
-use google to covert words add them in the pattern below in (language.ts)[language.ts]
-
+use google to covert words add them in the pattern below in language.ts file
+```
 "english" : {
                 "single_digits" : ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"],
                 "teens"         : ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen","nineteen" ],
@@ -102,6 +102,6 @@ use google to covert words add them in the pattern below in (language.ts)[langua
                 "crore_lakhs"   : ["crore", "lakh", "thousand", "hundred"],
                 "million_billions" : ["quadrillion", "trillion", "billion", "million","thousand"],
                 "and_currency"  : ["and", "rupees", "paise", "point"]
-
+```
 
 
