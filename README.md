@@ -1,16 +1,17 @@
-<h1>multilingual-number-to-words</h1>
+#multilingual-number-to-words
 
 Converts to number in to words. one can get words written in any language. users can add there own language if not included
 This module is written in typescript
 
-<h2> How to use </h2>
+##How to use
 use this command to include node module
 
-<h3>npm i multilingual-number-to-words</h3>
+###npm i multilingual-number-to-words
 
-<hr>
-<h4>Below the pre for using in Javascript file</h4>
-<pre>
+---
+####@Below the pre for using in Javascript file
+
+```
     var curNumberModule = require("multilingual-number-to-words");
     var curValue = new curNumberModule.number_to_string("hindi");
 
@@ -41,13 +42,12 @@ use this command to include node module
     var secondFrenchString = curFrenchValue.get_string(9130456456);// nine hundred thirteen crore  four lakh  fifty six thousand  four hundred fifty six
     console.log(secondFrenchString);
 
+```
 
-</pre>
-
-<hr>
+---
 <h4>Below the pre for using in Typescript file</h4>
 
-<pre>
+```
     import * as stringNumber from "./index";
     //to add new language for example french
     let french = {               
@@ -67,5 +67,5 @@ use this command to include node module
     // second value
     let secondString = curValue.get_string(9130456456);// nine hundred thirteen crore  four lakh  fifty six thousand  four hundred fifty six
     console.log(secondString);
-</pre>
+```
 
