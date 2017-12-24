@@ -23,21 +23,25 @@ var curValue = new curNumberModule.number_to_string("hindi");
 // first value
 var firstString = curValue.get_string(3456);//three thousand  four hundred fifty six
 console.log(firstString);
+```
 
-    
+### In Billons
+```    
 var curEnglishValue = new curNumberModule.number_to_string();//defulat is english 
 var englishMillionString = curEnglishValue.get_string_in_millions_and_billions(90909234567,56753,false,false);
 
 console.log("English in billions");
 console.log(englishMillionString);
-
-
+```
+### In Crores
+```
 console.log("\n\n\nEnglish in crores")
 var englishCrooreString = curEnglishValue.get_string_in_lakhs_and_crore(124909092.567);
 console.log(englishCrooreString);
+```
 
-
-
+### Use your own language in as JSON 
+```
 console.log("\n\n\nFrench")
 let french = {               
     "single_digits" : ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"],
@@ -47,7 +51,9 @@ let french = {
     "million_billions" : ["quadrillion", "billion", "billion", "million", "mille"],
     "and_currency"  : ["et", "roupies", "paise", "point"]
 }
-
+```
+### Adding french JSON as variable
+```
 var curFrenchValue = new curNumberModule.number_to_string(french);
 
 // first value
