@@ -10,6 +10,7 @@ var number_to_string = (function () {
     function number_to_string(curLanguage) {
         if (curLanguage === void 0) { curLanguage = 'english'; }
         this.word = ''; // this is retun word of numbers 
+        this.hundredWord = '';
         /*
             This is constructor fucntion
             Defualt language is english
@@ -40,97 +41,89 @@ var number_to_string = (function () {
         cNumber :- this is number to written in words
         decimal_in_curancy_style :- example decimal value `0.45` if set to `true` it will write as `and forty five` and false `point four five`
         currency :- true means it will add currency prefix and suffix
+        =========================
         */
+        //this code using reg exp returns number separted by ,
         if (decimal_in_curancy_style === void 0) { decimal_in_curancy_style = true; }
         if (currency === void 0) { currency = false; }
-        return this.get_string(cNumber, decimal_in_curancy_style, currency, crore_or_millions.million);
+        return this.make_string(cNumber, 'million');
     };
     number_to_string.prototype.get_string_in_lakhs_and_crore = function (cNumber, decimal_in_curancy_style, currency) {
-        if (decimal_in_curancy_style === void 0) { decimal_in_curancy_style = true; }
-        if (currency === void 0) { currency = false; }
         /*
         This returns number in words in lakhs  and format format
         cNumber :- this is number to written in words
         decimal_in_curancy_style :- example decimal value `0.45` if set to `true` it will write as `and forty five` and false `point four five`
         currency :- true means it will add currency prefix and suffix
-
+                        =====================
         */
-        return this.get_string(cNumber, decimal_in_curancy_style, currency, crore_or_millions.crore);
-    };
-    number_to_string.prototype.get_string = function (cNumber, decimal_in_curancy_style, currency, __crore_or_millions) {
         if (decimal_in_curancy_style === void 0) { decimal_in_curancy_style = true; }
         if (currency === void 0) { currency = false; }
-        if (__crore_or_millions === void 0) { __crore_or_millions = crore_or_millions.crore; }
+        return this.make_string(cNumber, 'lakh');
+    };
+    number_to_string.prototype.make_string = function (cNumber, string_type) {
+        if (string_type === void 0) { string_type = 'lakh'; }
         /*
-            this function common functon for million and crores
-            cNumber :- this is number to written in words
-            decimal_in_curancy_style :- example decimal value `0.45` if set to `true` it will write as `and forty five` and false `point four five`
-            currency :- true means it will add currency prefix and suffix
-            crore_or_millions : this enum objet if set crore_or_millions.crore retund words in words and for crore_or_millions.millons returns in millons
-        
+            Break the number into decimal, hundereds, thpusand, lakhs, crore
+            By convering it to string and conver it to positive value handling
+            this function makes string by taking arguments
+            cNumber = number for convartion
+            string_type = `lakh` or `million`
         */
-        this.__number = cNumber; //setting class wide __number
-        cNumber = Math.abs(cNumber); // converts the local var to positive value
-        var wholeInteger = Math.floor(cNumber); //extracting whole number
-        var stWholeInteger; //this value stores in words part of whole number
-        if (__crore_or_millions == crore_or_millions.crore) {
-            stWholeInteger = this.convert_to_string_crore_lakhs(wholeInteger).trim(); //gets the whole number in words
-        }
-        else if (__crore_or_millions == crore_or_millions.million) {
-            stWholeInteger = this.convert_to_string_billions_millions(wholeInteger).trim(); //gets the whole number in words
-        }
-        else {
-            throw new Error("invalid crore or million choice");
-        }
-        // handling decimals
-        var decimal_float;
-        var decimal;
-        var stDecimal;
-        //checking for currency style decimal vlaues or decimal style
-        if (decimal_in_curancy_style) {
-            // code for returning decimal values in currency style
-            decimal_float = parseFloat((cNumber - wholeInteger).toFixed(3));
-            decimal = parseInt(decimal_float * 100);
-            // check for checking string in millions or crores
-            if (__crore_or_millions == crore_or_millions.crore) {
-                //call for crore format      
-                stDecimal = this.convert_to_string_crore_lakhs(decimal).trim();
-            }
-            else if (__crore_or_millions == crore_or_millions.million) {
-                //call for milions and billions format
-                stDecimal = this.convert_to_string_billions_millions(decimal).trim(); //gets the whole number in words
-            }
-            else {
-                // if not throw error
-                throw new Error("invalid crore or million choice");
-            }
+        this.word = ""; //intiate class wide word as ""
+        this.hundredWord = '';
+        var stCNumber = Math.abs(cNumber).toString();
+        var stWholeNumber = "";
+        // separte decimal from stCNumber
+        var index = stCNumber.lastIndexOf(".");
+        if (index >= 0) {
+            stWholeNumber = stCNumber.substr(0, index);
         }
         else {
-            // code for returning decimal values in decimal style
-            decimal_float = parseFloat((cNumber - wholeInteger).toFixed(10));
-            stDecimal = this.non_currency_decimal(decimal_float);
+            stWholeNumber = stCNumber;
         }
-        // this check this currency prefix and suffix to added or not 
-        var curStWholeNumber = "";
-        var curStDecimal = "";
-        // if true i adds else not and returns
-        if (currency) {
-            if (stWholeInteger.trim() != "") {
-                curStWholeNumber = this.and_currency[1] + " " + stWholeInteger.trim();
+        var stDecimal = stCNumber.substr(index, stCNumber.length);
+        // remove last three number from whole number becuase both and lakh and million have hundreds
+        var intHumdreds = parseInt(stWholeNumber.substr(stWholeNumber.length - 3, stWholeNumber.length));
+        // create array for holding crore and lakhs break ups
+        var crore_lakh = [];
+        // creat array for holding million nad billions
+        var billion_million = [];
+        // stLessWholeNumber this holds string of stWholeNumber - last three digits i.e. hundreds
+        var stLessWholeNumber = stWholeNumber.substring(0, stWholeNumber.length - 3);
+        if (index == -1) {
+            // write code to handle decimals
+        }
+        // handle whole number
+        if (string_type === 'lakh') {
+            var loop_times = Math.ceil((stLessWholeNumber.length) / 2);
+            for (var i = 0; i < loop_times; i++) {
+                crore_lakh[i] = parseInt(stLessWholeNumber.substr(stLessWholeNumber.length - 2, stLessWholeNumber.length));
+                stLessWholeNumber = stLessWholeNumber.substr(0, stLessWholeNumber.length - 2);
             }
-            if (stDecimal.trim() != "") {
-                curStDecimal = this.and_currency[0] + " " + stDecimal + " " + this.and_currency[2].trim();
+            for (var i = 0; i < crore_lakh.length; i++) {
+                // console.log(this.crore_lakhs[(this.crore_lakhs.length - loop_times -1) +i]);
+                this.word += " " + this.get_hundreds_double_digits(crore_lakh[crore_lakh.length - (i + 1)], this.crore_lakhs[(this.crore_lakhs.length - loop_times - 1) + i]);
+                this.hundredWord = "";
             }
         }
-        else {
-            if (stWholeInteger.trim() != "") {
-                curStWholeNumber = stWholeInteger.trim();
+        else if (string_type === 'million') {
+            if (cNumber > 999999999) {
+                throw new Error("Number is too large to handle");
             }
-            if (stDecimal.trim() != "") {
-                curStDecimal = this.and_currency[0] + " " + stDecimal;
+            var loop_times = Math.ceil((stLessWholeNumber.length) / 3);
+            for (var i = 0; i < loop_times; i++) {
+                billion_million[i] = parseInt(stLessWholeNumber.substr(stLessWholeNumber.length - 3, stLessWholeNumber.length));
+                stLessWholeNumber = stLessWholeNumber.substr(0, stLessWholeNumber.length - 3);
+            }
+            for (var i = 0; i < billion_million.length; i++) {
+                this.word += " " + this.get_hundreds_double_digits(billion_million[billion_million.length - (i + 1)], this.million_billions[(this.million_billions.length - loop_times - 1) + i]);
+                this.hundredWord = "";
             }
         }
-        return (curStWholeNumber + " " + curStDecimal).trim();
+        // this 
+        this.hundredWord = '';
+        var stHundred = this.get_hundreds_double_digits(intHumdreds);
+        return this.word += " " + stHundred;
     };
     number_to_string.prototype.non_currency_decimal = function (decimal) {
         /*
@@ -155,147 +148,56 @@ var number_to_string = (function () {
         }
         return stDecimal;
     };
-    number_to_string.prototype.convert_to_string_crore_lakhs = function (cNumber) {
+    number_to_string.prototype.get_hundreds_double_digits = function (hunNumber, suffix) {
         /*
-            convert string into word in lakhs and crore format
+            this function returns the number from 999 to 1 in the form of hundredWords
+            This os boiler plate for all decimals
+            has attach suffix like thousand, lakh after number in words
+            Number are passed after spliting them
+            splits dpenden on lakh VS million need
+        
         */
-        var lNumber = cNumber;
-        var crore;
-        var lakh;
-        var thousand;
-        var stCrore = '';
-        var stLakh = '';
-        var stThousand = '';
-        var stHundredLess = '';
-        if (lNumber > 9999999999) {
-            throw new Error("The number is too large to handle");
-        }
-        // crores
-        this.word = '';
-        crore = Math.floor(cNumber / Math.pow(10, 7));
-        lNumber = lNumber - (crore * Math.pow(10, 7));
-        if (crore > 0) {
-            stCrore = this.get_hundreds_double_digits(crore) + " " + this.crore_lakhs[0] + " ";
-        }
-        // // lakhs
-        this.word = '';
-        lakh = Math.floor(lNumber / Math.pow(10, 5));
-        lNumber = lNumber - (lakh * Math.pow(10, 5));
-        if (lakh > 0) {
-            stLakh = this.get_hundreds_double_digits(lakh) + " " + this.crore_lakhs[1] + " ";
-        }
-        // thousands
-        this.word = '';
-        thousand = Math.floor(lNumber / Math.pow(10, 3));
-        lNumber = lNumber - (thousand * Math.pow(10, 3));
-        if (thousand > 0) {
-            stThousand = this.get_hundreds_double_digits(thousand) + " " + this.crore_lakhs[2] + " ";
-        }
-        // hundreds 
-        this.word = '';
-        if (lNumber > 0) {
-            stHundredLess = this.get_hundreds_double_digits(lNumber);
-        }
-        return stCrore + stLakh + stThousand + stHundredLess.trim();
-    };
-    number_to_string.prototype.convert_to_string_billions_millions = function (cNumber) {
-        /*
-            converts the number in to words in million and billion format
-        */
-        var lNumber = cNumber;
-        if (lNumber > 99999999999999) {
-            throw new Error("Number is too large to handle");
-        }
-        var quadrillion;
-        var trillion;
-        var billion;
-        var million;
-        var thousand;
-        var stQuadrillion = '';
-        var stTrillion = '';
-        var stBillion = '';
-        var stMillion = '';
-        var stThousand = '';
-        var stHundredLess = '';
-        // quadrllion
-        this.word = '';
-        quadrillion = Math.floor(lNumber / Math.pow(10, 15));
-        lNumber = lNumber - (quadrillion * Math.pow(10, 15));
-        if (quadrillion > 0) {
-            stQuadrillion = this.get_hundreds_double_digits(quadrillion) + " " + this.million_billions[0] + " ";
-        }
-        // trillion
-        this.word = '';
-        trillion = Math.floor(lNumber / Math.pow(10, 12));
-        lNumber = lNumber - (trillion * Math.pow(10, 12));
-        if (trillion > 0) {
-            stTrillion = this.get_hundreds_double_digits(trillion) + " " + this.million_billions[1] + " ";
-        }
-        // billions
-        this.word = '';
-        billion = Math.floor(lNumber / Math.pow(10, 9));
-        lNumber = lNumber - (billion * Math.pow(10, 9));
-        if (billion > 0) {
-            stBillion = this.get_hundreds_double_digits(billion) + " " + this.million_billions[2] + " ";
-        }
-        //million
-        this.word = '';
-        million = Math.floor(lNumber / Math.pow(10, 6));
-        lNumber = lNumber - (million * Math.pow(10, 6));
-        if (million > 0) {
-            stMillion = this.get_hundreds_double_digits(million) + " " + this.million_billions[3] + " ";
-        }
-        // thousands
-        this.word = '';
-        thousand = Math.floor(lNumber / Math.pow(10, 3));
-        lNumber = lNumber - (thousand * Math.pow(10, 3));
-        if (thousand > 0) {
-            stThousand = this.get_hundreds_double_digits(thousand) + " " + this.million_billions[4] + " ";
-        }
-        // hundreds 
-        this.word = '';
-        if (lNumber > 0) {
-            stHundredLess = this.get_hundreds_double_digits(lNumber);
-        }
-        return stQuadrillion + stTrillion + stBillion + stMillion + stThousand + stHundredLess.trim();
-    };
-    number_to_string.prototype.get_hundreds_double_digits = function (__lNumber) {
-        // this function returns the number from 999 to 1 in the form of words
+        if (suffix === void 0) { suffix = ''; }
+        var lNumber = hunNumber;
         var tNumber = 0;
-        if (__lNumber > 999) {
+        if (hunNumber > 999) {
             throw new Error('Invalid entry');
         }
-        if (__lNumber < 1000 && __lNumber >= 100) {
-            // hundreads
-            tNumber = Math.floor(__lNumber / 100);
-            __lNumber = __lNumber - (tNumber * 100);
-            this.word += " " + this.single_digits[tNumber] + " " + this.crore_lakhs[3];
-            if (__lNumber > 0) {
-                this.get_hundreds_double_digits(__lNumber);
+        if (lNumber > 99) {
+            // code for hundreds
+            tNumber = Math.floor(lNumber / 100);
+            lNumber = lNumber - (tNumber * 100);
+            if (tNumber > 0) {
+                this.hundredWord += " " + this.single_digits[tNumber] + " " + this.crore_lakhs[3];
+            }
+            if (lNumber > 0) {
+                this.get_hundreds_double_digits(lNumber);
             }
         }
-        else if (__lNumber <= 100 && __lNumber >= 20) {
-            // double_digits more than and equal =20
-            tNumber = Math.floor(__lNumber / 10);
-            __lNumber = __lNumber - (tNumber * 10);
-            this.word += " " + this.double_digits[tNumber];
-            if (__lNumber > 0) {
-                this.get_hundreds_double_digits(__lNumber);
+        else if (lNumber <= 99 && lNumber >= 20) {
+            // code for double digits
+            tNumber = Math.floor(lNumber / 10);
+            lNumber = lNumber - (tNumber * 10);
+            if (tNumber > 0) {
+                this.hundredWord += " " + this.double_digits[tNumber];
+            }
+            if (lNumber > 0) {
+                this.get_hundreds_double_digits(lNumber);
             }
         }
-        else if (__lNumber <= 20 && __lNumber >= 10) {
-            // teens
-            this.word += " " + this.teens[__lNumber - 10];
+        else if (lNumber <= 19 && lNumber >= 10) {
+            // code for teens
+            this.hundredWord += " " + this.teens[lNumber - 10];
         }
-        else if (__lNumber < 10 && __lNumber > 0) {
-            // single digits
-            this.word += " " + this.single_digits[__lNumber];
+        else if (lNumber < 10 && lNumber > 0) {
+            // code for single digits
+            this.hundredWord += " " + this.single_digits[lNumber];
         }
         else {
-            throw new Error('Invalid entry');
+            throw new Error("Invalid entry");
         }
-        return this.word;
+        return (this.hundredWord + " " + suffix).trim();
     };
     return number_to_string;
-}());
+}()); //end of class
 exports.number_to_string = number_to_string;
