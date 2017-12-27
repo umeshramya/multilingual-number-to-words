@@ -1,53 +1,48 @@
 var curNumberModule = require('./index.js');
 
 var curEnglishValue = new curNumberModule.number_to_string();//defulat is english 
-// var englishMillionString = curEnglishValue.get_string_in_millions_and_billions(90909234567,56753,false,false);
+var curNumber = 900245234567.56753;
+var englishMillionString = curEnglishValue.get_string_in_millions_and_billions(curNumber,false,false);
 
-// console.log("English in billions");
-// console.log(englishMillionString);
-// console.log(curEnglishValue.strComaNumaber);
-
-
-
-
-
+console.log("English in billions");
+console.log(curNumber);
+console.log(englishMillionString);
 
 
 console.log("\n\n\nEnglish in crores")
-// var englishCrooreString = curEnglishValue.get_string_in_lakhs_and_crore(1234687.29);
-// console.log(englishCrooreString);
-// console.log(curEnglishValue.strComaNumaber);
-var englishCrooreString = curEnglishValue.get_string_in_lakhs_and_crore(999999999);
-
-// var englishCrooreString = curEnglishValue.get_string_in_millions_and_billions(999999999999999 + 1)
+curNumber = 10234687.29;
+var englishCrooreString = curEnglishValue.get_string_in_lakhs_and_crore(curNumber);
+console.log(curNumber);
 console.log(englishCrooreString);
+var englishCroreString = curEnglishValue.get_string_in_lakhs_and_crore(345621.456, true, true);
 
 
 
-// console.log("\n\n\nFrench")
-// let french = {               
-//     "single_digits" : ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"],
-//     "teens"         : ["dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"],
-//     "double_digits" :  ["zéro", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante-dix", "quatre-vingts", "quatre-vingt-dix" ],
-//     "crore_lakhs"   : ["crore", "lakh", "mille", "cent"],
-//     "million_billions" : ["quadrillion", "billion", "billion", "million", "mille"],
-//     "and_currency"  : ["et", "roupies", "paise", "point"]
-// }
-
-// var curFrenchValue = new curNumberModule.number_to_string(french);
-
-// // first value
-// var firstFrenchString = curFrenchValue.get_string_in_millions_and_billions(4567623423.70346666666,true,true);//trois mille  quatre cent cinquante six
-// console.log(firstFrenchString);
-// console.log(curFrenchValue.strComaNumaber);
-
-// // var secondString = curFrenchValue.get_string(345678,true,true,curNumberModule.crore_or_millions.crore);
 
 
-// // // second value
-// // var secondString = curFrenchValue.get_string(9130456456.789);// neuf cent treize crore  quatre lakh  cinquante six mille  quatre cent cinquante six
-// // console.log(secondString);
-// // console.log(curFrenchValue.strComaNumaber);
+console.log("\n\n\nFrench")
+let french = {               
+    "single_digits" : ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"],
+    "teens"         : ["dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"],
+    "double_digits" :  ["zéro", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante-dix", "quatre-vingts", "quatre-vingt-dix" ],
+    "crore_lakhs"   : ["crore", "lakh", "mille", "cent"],
+    "million_billions" : ["quadrillion", "billion", "billion", "million", "mille"],
+    "and_currency"  : ["et", "roupies", "paise", "point"]
+}
+
+var curFrenchValue = new curNumberModule.number_to_string(french);
+
+// first value
+curNumber = 4567623423.70346666666;
+var firstFrenchString = curFrenchValue.get_string_in_millions_and_billions(curNumber,true,true);//trois mille  quatre cent cinquante six
+console.log(curNumber);
+console.log(firstFrenchString);
+
+curNumber =345678;
+var secondString = curFrenchValue.get_string_in_lakhs_and_crore(curNumber,true,true);
+console.log(curNumber);
+console.log(secondString);
+
 
 
 

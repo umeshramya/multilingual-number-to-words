@@ -6,6 +6,8 @@
   "scripts": {
     "start" : "tsc index.ts; tsc test_typescript_index.ts;", 
     "test": "node test.index.js; node test_typescript_index.js;",
+    "test1" : "tsc index; node test.index.js;",
+    "test-1": "node test.index;",
     "prepublish": "npm start; npm test;"
   },
   "repository": {
