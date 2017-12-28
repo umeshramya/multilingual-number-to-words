@@ -1,10 +1,5 @@
 import * as moduleLanguage from './language';
 
-export enum crore_or_millions{
-	"crore"     = 0,
-	"million"   = 1
-}
-
 export class number_to_string {
 
 	/* 

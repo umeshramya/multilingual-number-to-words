@@ -33,11 +33,13 @@ let french = {
 var curFrenchValue = new curNumberModule.number_to_string(french);
 
 // first value
+console.log('First value in french')
 curNumber = 4567623423.70346666666;
 var firstFrenchString = curFrenchValue.get_string_in_millions_and_billions(curNumber,true,true);//trois mille  quatre cent cinquante six
 console.log(curNumber);
 console.log(firstFrenchString);
 
+console.log('\n\n\n\nSecond value in french')
 curNumber =345678;
 var secondString = curFrenchValue.get_string_in_lakhs_and_crore(curNumber,true,true);
 console.log(curNumber);

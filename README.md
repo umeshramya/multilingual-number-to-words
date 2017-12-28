@@ -1,16 +1,36 @@
 # multilingual-number-to-words
 
-Converts to number in to words. one can get words written in any language. users can add there own language if not included
+Converts to number in to words. one can get words written in any language. users can add there own language if not included 
 This module is written in typescript
 
 ## Contributors
 -Dr Umesh R Bilagi <umeshbilagi@gmail.com>
 
 ## How to use
-use this command to include node module
-
+use this command to include as  node module
 ### npm i multilingual-number-to-words
 
+or from git hib down load files
+-index.ts or index.js
+-language.ts or .js
+-bundle.js (created using browserify)
+
+index file conatains the code and language file conatins JSON of languages
+
+for frontend web application we recomend browserify 
+### Handling decimal values
+Decimal values are returned for example 120.65 as one hundred twenty and sixty five by defualt. (this is set as defualt becuase most print to words are for financial trasactions)
+
+To make decimal value to be returned as one hundred twenty point six and five. call function
+your-var.get_string_in_millions_and_billions(90909234567,56753,false);
+
+to make currency prefix at begining and end call function
+your-var.get_string_in_millions_and_billions(90909234567,56753,false,true);
+
+#### decimal value trucated to two degits
+
+### Note maximium number for crore and lakh conversion is 999999998
+### Note maximium number for million and billion conversion is 999999999999998
 ---
 #### @Below the code for using in Javascript file
 
@@ -74,24 +94,16 @@ console.log(secondString);
 ### Below the code for using in Typescript file
 
 ```
-import * as stringNumber from "./index";
-//to add new language for example french
-let french = {               
-    "single_digits" : ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"],
-    "teens"         : ["dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"],
-    "double_digits" :  ["zéro", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante-dix", "quatre-vingts", "quatre-vingt-dix" ],
-    "crore_lakhs"   : ["crore", "lakh", "mille", "cent"]
-}
+import * as stringNumber from './index';
 
-
-let curValue = new stringNumber.number_to_string(french);
+let curValue = new stringNumber.number_to_string();
 
 // first value
-let firstString = curValue.get_string(3456);//three thousand  four hundred fifty six
+let firstString = curValue.get_string_in_millions_and_billions(34562,true,true);//
 console.log(firstString);
 
 // second value
-let secondString = curValue.get_string(9130456456);// nine hundred thirteen crore  four lakh  fifty six thousand  four hundred fifty six
+let secondString = curValue.get_string_in_lakhs_and_crore(91304566);
 console.log(secondString);
 
 ```
