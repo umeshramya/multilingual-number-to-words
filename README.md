@@ -1,7 +1,9 @@
 # multilingual-number-to-words
 
-Converts to number into words. one can get words written in any language.This module is written in typescript. Users or developers can add their own language if not included in this project
-as of now following languages are included in this project
+This converts to number in to words. one can get words written in any language. users can add there own language if not included. it also gives numbers in coma separated fashion. one can get results for both lakhs-crore and also in million-billion format
+###### This module is written in typescript. 
+###### Users or developers can add their own language if not included in this project
+As of now Version 3.0.0 following languages are included in this project
 1. english (default)
 2. kananda
 3. hindi
@@ -14,7 +16,7 @@ as of now following languages are included in this project
 
 ## How to use
 use this command to include as a node module
-### npm i multilingual-number-to-words
+###### npm i multilingual-number-to-words
 
 
 or from git hub download files
@@ -27,7 +29,7 @@ index file contains the code and language file contains JSON of languages
 
 
 for frontend web application we recommend browserify
-### Handling decimal values
+###### Handling decimal values
 Decimal values are returned for example 120.65 as one hundred twenty and sixty five by default. (this is set as default because most prints to words are for financial transactions)
 
 
@@ -39,11 +41,11 @@ to make currency prefix at begining and end call function
 your-var.get_string_in_millions_and_billions(90909234567,56753,false,true);
 
 
-#### decimal value truncated to two degits
+###### decimal value truncated to two degits
 
 
-### Note maximum number for crore and lakh conversion is 999999998
-### Note maximum number for million and billion conversions is 999999999999998
+###### Note maximum number for crore and lakh conversion is 999999998
+###### Note maximum number for million and billion conversions is 999999999999998
 ---
 #### @Below the code for using in Javascript file
 
@@ -156,10 +158,9 @@ console.log(comaSeparetedNumberMillion);
 ---
 ## How add languages to this project i.e in to repository
 
-
-language.ts fiel is place add new laungage
+language.ts file is place add new laungage
 Make fork and add language send pull request
-use google to covert words add them in the pattern below in language.ts file
+use google to convert into words add them in the pattern below in language.ts file
 ```
 "english" : {
 "single_digits" : ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"],
