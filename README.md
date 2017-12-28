@@ -47,7 +47,7 @@ your-var.get_string_in_millions_and_billions(90909234567,56753,false,true);
 ###### Note maximum number for crore and lakh conversion is 999999998
 ###### Note maximum number for million and billion conversions is 999999999999998
 ---
-#### @Below the code for using in Javascript file
+#### Below the code for using in Javascript file
 
 
 ```
