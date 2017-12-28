@@ -1,11 +1,11 @@
 "use strict";
 exports.__esModule = true;
 var moduleLanguage = require("./language");
-var number_to_string = (function () {
+var number_to_string = /** @class */ (function () {
     function number_to_string(curLanguage) {
         if (curLanguage === void 0) { curLanguage = 'english'; }
-        this.word = ''; // this is retun word of numbers 
-        this.hundredWord = '';
+        this.word = ''; //this is retun word of numbers 
+        this.hundredWord = ''; //
         /*
             This is constructor fucntion
             Defualt language is english
@@ -186,6 +186,40 @@ var number_to_string = (function () {
             this.word = stPrefix + " " + this.word + " " + stSuffix;
         }
         return this.word;
+    };
+    number_to_string.prototype.get_coma_separted_numbers_lakh = function (cNumber, lakh_million) {
+        if (lakh_million === void 0) { lakh_million = 'lakh'; }
+        // returns the numbers as string with coma separation in lakh format
+        return this.get_coma_separted_numbers(cNumber, 'lakh');
+    };
+    number_to_string.prototype.get_coma_separted_numbers_million = function (cNumber, lakh_million) {
+        if (lakh_million === void 0) { lakh_million = 'lakh'; }
+        // returns the numbers as string with coma separation in million format
+        return this.get_coma_separted_numbers(cNumber, 'million');
+    };
+    number_to_string.prototype.get_coma_separted_numbers = function (cNumber, lakh_million) {
+        if (lakh_million === void 0) { lakh_million = 'lakh'; }
+        // this converts the number into coma seprated strings
+        //this code using reg exp returns number separted by ,
+        var wholeNumber = Math.floor(cNumber);
+        var decimal = (cNumber - wholeNumber).toFixed(2);
+        var stDecimal = decimal.toString();
+        var stWholeNumber = wholeNumber.toString();
+        var lastThree = stWholeNumber.substring(stWholeNumber.length - 3);
+        var otherNumbers = stWholeNumber.substring(0, stWholeNumber.length - 3);
+        var strComaNumber = '';
+        if (lakh_million == "lakh") {
+            if (otherNumbers != '')
+                lastThree = ',' + lastThree;
+            strComaNumber = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+            return strComaNumber + stDecimal;
+        }
+        else if (lakh_million == "million") {
+            if (otherNumbers != '')
+                lastThree = ',' + lastThree;
+            strComaNumber = otherNumbers.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + lastThree;
+            return strComaNumber + stDecimal;
+        }
     };
     number_to_string.prototype.non_currency_decimal = function (decimal) {
         /*

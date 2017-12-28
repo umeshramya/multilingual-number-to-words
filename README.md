@@ -107,7 +107,25 @@ let secondString = curValue.get_string_in_lakhs_and_crore(91304566);
 console.log(secondString);
 
 ```
+---
+#### Coma separted Numbers
 
+##### number in coma serated string in lakh;
+```
+// number in coma serated string in lakh;
+var comaSeparetedNumberlakh= curFrenchValue.get_coma_separted_numbers_lakh(1234567.688);
+console.log("\n\n\n\n\Coma separeted Numbers in laks (1234567.688)")
+console.log(comaSeparetedNumberlakh);
+```
+##### number in coma serated string in million;
+```
+// number in coma serated string in million;
+var comaSeparetedNumberMillion= curFrenchValue.get_coma_separted_numbers_million(1234567.688;
+console.log("\n\n\n\n\Coma separeted Numbers in Million` (1234567.688)");
+console.log(comaSeparetedNumberMillion);
+```
+---
+---
 ## How add languages to this project
 
 Make fork and add language  send pull request

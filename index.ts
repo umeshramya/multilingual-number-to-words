@@ -21,16 +21,15 @@ export class number_to_string {
 		check test.index.js file
 
 	*/
-	
-	private __number: number;           //number to be passed
-	private single_digits:string[];     // this is array of string ie single digits  numbers
-	private teens:string[];             // this is array of string ie teen  numbers
-	private double_digits:string[];     // this is array of string ie double digits  numbers
-	private crore_lakhs:string[];       // this is array of strings ie crore, lakh thousand in needed language
-	private million_billions:string[]    // this is array of string million and billion in needed language
-	private and_currency:string[]       // this contains  array of "and", "whole number currency", "decimal part currency"
-	private word: string='';            // this is retun word of numbers 
-	private hundredWord:string='';
+	private __number:number;			//number to be passed
+	private single_digits:string[];		//this is array of string ie single digits  numbers
+	private teens:string[];				//this is array of string ie teen  numbers
+	private double_digits:string[];		//this is array of string ie double digits  numbers
+	private crore_lakhs:string[];		//this is array of strings ie crore, lakh thousand in needed language
+	private million_billions:string[];	//this is array of string million and billion in needed language
+	private and_currency:string[];		//this contains  array of "and", "whole number currency", "decimal part currency"
+	private word: string='';			//this is retun word of numbers 
+	private hundredWord:string='';		//
 	
 
 
@@ -239,9 +238,41 @@ export class number_to_string {
 		}
 		return this.word;
 	}
-
-
+	public  get_coma_separted_numbers_lakh(cNumber:number, lakh_million:string='lakh'){
+		// returns the numbers as string with coma separation in lakh format
+		return this.get_coma_separted_numbers(cNumber, 'lakh');
+	}
 	
+	public  get_coma_separted_numbers_million(cNumber:number, lakh_million:string='lakh'){
+		// returns the numbers as string with coma separation in million format
+		return this.get_coma_separted_numbers(cNumber, 'million');
+	}
+
+	private get_coma_separted_numbers(cNumber:number, lakh_million:string='lakh'){
+		// this converts the number into coma seprated strings
+		//this code using reg exp returns number separted by ,
+        let wholeNumber:number		= Math.floor(cNumber);
+        let decimal:string 			= (cNumber - wholeNumber).toFixed(2);
+        let stDecimal:string 		= decimal.toString();
+        let stWholeNumber:string	= wholeNumber.toString();
+        let lastThree:string		= stWholeNumber.substring(stWholeNumber.length-3);
+        let otherNumbers:string		= stWholeNumber.substring(0,stWholeNumber.length-3);
+		let strComaNumber:string	='';
+		if(lakh_million =="lakh"){
+			if(otherNumbers != '')
+				lastThree = ',' + lastThree;
+			strComaNumber = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+			return strComaNumber + stDecimal;
+		}else if(lakh_million == "million"){
+			if(otherNumbers != '')
+				lastThree = ',' + lastThree;
+			strComaNumber = otherNumbers.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + lastThree;
+			return strComaNumber + stDecimal;
+
+		}
+
+        
+	}
 	private non_currency_decimal(decimal:number){
 		/*
 			this functions converts decimal values into words with single digits

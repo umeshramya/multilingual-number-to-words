@@ -46,6 +46,13 @@ console.log(curNumber);
 console.log(secondString);
 
 
+// number in coma serated string in lakh;
+var comaSeparetedNumberlakh= curFrenchValue.get_coma_separted_numbers_lakh(1234567.688);
+console.log("\n\n\n\n\Coma separeted Numbers in laks (1234567.688)")
+console.log(comaSeparetedNumberlakh);
 
-
+// number in coma serated string in million;
+var comaSeparetedNumberMillion= curFrenchValue.get_coma_separted_numbers_million(1234567.688);
+console.log("\n\n\n\n\Coma separeted Numbers in Million` (1234567.688)")
+console.log(comaSeparetedNumberMillion);
 
