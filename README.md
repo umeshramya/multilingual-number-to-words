@@ -1,5 +1,11 @@
 # multilingual-number-to-words
 
+[![NPM Version][npm-image]][npm-url]
+[![NPM Downloads][downloads-image]][downloads-url]
+[![Node.js Version][node-version-image]][node-version-url]
+[![Build Status][travis-image]][travis-url]
+[![Test Coverage][coveralls-image]][coveralls-url]
+
 This converts to number in to words. one can get words written in any language. users can add there own language if not included. it also gives numbers in coma separated fashion. one can get results for both lakhs-crore and also in million-billion format
 ###### This module is written in typescript. 
 ###### Users or developers can add their own language if not included in this project
