@@ -1,5 +1,5 @@
 # multilingual-number-to-words
-![verson](https://img.shields.io/badge/version-4.0.0-green.svg)
+![verson](https://img.shields.io/badge/version-4.0.2-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellowgreen.svg)
 
 This converts to number in to words. one can get words written in any language. users can add there own language if not included. it also gives numbers in coma separated fashion. one can get results for both lakhs-crore and also in million-billion format
@@ -151,3 +151,6 @@ use google to convert into words add them in the pattern below in language.ts fi
 "million_billions" : ["quadrillion", "trillion", "billion", "million","thousand", "hundred"],
 "and_currency" : ["and", "rupees", "paise", "point"]
 ```
+## To Do
+1.  fix bug in million billion double digit 
+2.  to use regular expression of coma seprated method change the present one
