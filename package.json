@@ -1,14 +1,10 @@
 {
   "name": "multilingual-number-to-words",
-  "version": "3.0.0",
+  "version": "4.0.1",
   "description": "Converts to number in to words. one can get words written in any language. users can add there own language if not included",
   "main": "index.js",
   "scripts": {
-    "start" : "tsc index.ts; tsc test_typescript_index.ts;", 
-    "test": "node test.index.js; node test_typescript_index.js;",
-    "test1" : "tsc index; node test.index.js;",
-    "test-1": "node test.index;",
-    "prepublish": "npm start; npm test;"
+    "test": "node test.index.js; node test_typescript_index.js;"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var moduleLanguage = require("./language");
 var number_to_string = /** @class */ (function () {
     function number_to_string(curLanguage) {
@@ -212,12 +212,14 @@ var number_to_string = /** @class */ (function () {
             if (otherNumbers != '')
                 lastThree = ',' + lastThree;
             strComaNumber = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+            strComaNumber = strComaNumber.substr(0, strComaNumber.length - 1);
             return strComaNumber + stDecimal;
         }
         else if (lakh_million == "million") {
             if (otherNumbers != '')
                 lastThree = ',' + lastThree;
             strComaNumber = otherNumbers.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + lastThree;
+            strComaNumber = strComaNumber.substr(0, strComaNumber.length - 1);
             return strComaNumber + stDecimal;
         }
     };

@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var stringNumber = require("./index");
 var curValue = new stringNumber.number_to_string();
 // first value

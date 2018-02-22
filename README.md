@@ -1,4 +1,6 @@
 # multilingual-number-to-words
+![verson](https://img.shields.io/badge/version-4.0.0-green.svg)
+![License](https://img.shields.io/badge/License-MIT-yellowgreen.svg)
 
 This converts to number in to words. one can get words written in any language. users can add there own language if not included. it also gives numbers in coma separated fashion. one can get results for both lakhs-crore and also in million-billion format
 ###### This module is written in typescript. 
@@ -115,27 +117,6 @@ console.log(secondString);
 
 
 ---
-### Below the code for using in Typescript file
-
-
-```
-import * as stringNumber from './index';
-
-
-let curValue = new stringNumber.number_to_string();
-
-
-// first value
-let firstString = curValue.get_string_in_millions_and_billions(34562,true,true);//
-console.log(firstString);
-
-
-// second value
-let secondString = curValue.get_string_in_lakhs_and_crore(91304566);
-console.log(secondString);
-
-
-```
 ---
 #### Coma separted Numbers
 
