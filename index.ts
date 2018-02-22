@@ -223,7 +223,7 @@ export class number_to_string {
 			for (var i = 0; i < billion_million.length; i++) {
 				// code for words in millions
 				this.word += " " + this.get_hundreds_double_digits(billion_million[billion_million.length - (i +1)]
-										, this.million_billions[(this.million_billions.length - loop_times -1) +i]) ;
+				, this.million_billions[(this.million_billions.length - loop_times -1) +i]) ;
 				this.hundredWord="";
 			}
 		
@@ -253,7 +253,8 @@ export class number_to_string {
 		//this code using reg exp returns number separted by ,
         let wholeNumber:number		= Math.floor(cNumber);
         let decimal:string 			= (cNumber - wholeNumber).toFixed(2);
-        let stDecimal:string 		= decimal.toString();
+		let stDecimal:string 		=  decimal.toString();
+		stDecimal 					= stDecimal.substr(1, stDecimal.length);//remove zero before decimals
         let stWholeNumber:string	= wholeNumber.toString();
         let lastThree:string		= stWholeNumber.substring(stWholeNumber.length-3);
         let otherNumbers:string		= stWholeNumber.substring(0,stWholeNumber.length-3);
@@ -262,13 +263,12 @@ export class number_to_string {
 			if(otherNumbers != '')
 				lastThree = ',' + lastThree;
 			strComaNumber = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
-			strComaNumber = strComaNumber.substr(0, strComaNumber.length -1);
+			
 			return strComaNumber + stDecimal;
 		}else if(lakh_million == "million"){
 			if(otherNumbers != '')
 				lastThree = ',' + lastThree;
 			strComaNumber = otherNumbers.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + lastThree;
-			strComaNumber = strComaNumber.substr(0, strComaNumber.length -1);
 			return strComaNumber + stDecimal;
 
 		}

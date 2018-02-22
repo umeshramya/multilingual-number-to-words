@@ -91,7 +91,7 @@ let french = {
 "teens" : ["dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"],
 "double_digits" : ["zéro", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante-dix", "quatre-vingts", "quatre-vingt-dix" ],
 "crore_lakhs" : ["crore", "lakh", "mille", "cent"],
-"million_billions" : ["quadrillion", "billion", "billion", "million", "mille"],
+"million_billions" : ["quadrillion", "billion", "billion", "million", "mille", "cent"],
 "and_currency" : ["et", "roupies", "paise", "point"]
 }
 ```
@@ -148,6 +148,6 @@ use google to convert into words add them in the pattern below in language.ts fi
 "teens" : ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen","nineteen" ],
 "double_digits" : ["zero","ten", "twenty", "thirty", "forty", "fifty","sixty", "seventy", "eighty", "ninety" ],
 "crore_lakhs" : ["crore", "lakh", "thousand", "hundred"],
-"million_billions" : ["quadrillion", "trillion", "billion", "million","thousand"],
+"million_billions" : ["quadrillion", "trillion", "billion", "million","thousand", "hundred"],
 "and_currency" : ["and", "rupees", "paise", "point"]
 ```

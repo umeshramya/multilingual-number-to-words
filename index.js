@@ -204,6 +204,7 @@ var number_to_string = /** @class */ (function () {
         var wholeNumber = Math.floor(cNumber);
         var decimal = (cNumber - wholeNumber).toFixed(2);
         var stDecimal = decimal.toString();
+        stDecimal = stDecimal.substr(1, stDecimal.length); //remove zero before decimals
         var stWholeNumber = wholeNumber.toString();
         var lastThree = stWholeNumber.substring(stWholeNumber.length - 3);
         var otherNumbers = stWholeNumber.substring(0, stWholeNumber.length - 3);
@@ -212,14 +213,12 @@ var number_to_string = /** @class */ (function () {
             if (otherNumbers != '')
                 lastThree = ',' + lastThree;
             strComaNumber = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
-            strComaNumber = strComaNumber.substr(0, strComaNumber.length - 1);
             return strComaNumber + stDecimal;
         }
         else if (lakh_million == "million") {
             if (otherNumbers != '')
                 lastThree = ',' + lastThree;
             strComaNumber = otherNumbers.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + lastThree;
-            strComaNumber = strComaNumber.substr(0, strComaNumber.length - 1);
             return strComaNumber + stDecimal;
         }
     };

@@ -7,7 +7,7 @@ export let language = {
                 "teens"         : ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen","nineteen" ],
                 "double_digits" :  ["zero","ten", "twenty", "thirty", "forty", "fifty","sixty", "seventy", "eighty", "ninety" ],
                 "crore_lakhs"   : ["crore", "lakh", "thousand", "hundred"],
-                "million_billions" : ["quadrillion", "trillion", "billion", "million","thousand"],
+                "million_billions" : ["quadrillion", "trillion", "billion", "million","thousand", "hundred"],
                 "and_currency"  : ["and", "rupees", "paise", "point"]
 
             },
@@ -17,7 +17,7 @@ export let language = {
                 "teens"         : ["ಹತ್ತು", "ಹನ್ನೊಂದು", "ಹನ್ನೆರಡು", "ಹದಿಮೂರು", "ಹದಿನಾಲ್ಕು", "ಹದಿನೈದು", "ಹದಿನಾರು", "ಹದಿನೇಳು", "ಹದಿನೆಂಟು", "ಹತ್ತೊಂಬತ್ತು"],
                 "double_digits" : ["ಶೂನ್ಯ", "ಹತ್ತು", "ಇಪ್ಪತ್ತು", "ಮೂವತ್ತು", "ನಲವತ್ತು", "ಐವತ್ತು", "ಅರವತ್ತು ","ಎಪ್ಪತ್ತು","ಎಂಭತ್ತು","ತೊಂಬತ್ತು"],
                 "crore_lakhs"   : ["ಕೋಟಿ", "ಲಕ್ಷ", "ಸಾವಿರ", "ನೂರು"],
-                "million_billions" : ["ಕ್ವಾಡ್ರಿಲಿಯನ್", "ಟ್ರಿಲಿಯನ್", "ಬಿಲಿಯನ್", "ಮಿಲಿಯನ್", "ಸಾವಿರ"],
+                "million_billions" : ["ಕ್ವಾಡ್ರಿಲಿಯನ್", "ಟ್ರಿಲಿಯನ್", "ಬಿಲಿಯನ್", "ಮಿಲಿಯನ್", "ಸಾವಿರ", , "ನೂರು"],
                 "and_currency"  : ["ಮತ್ತು", "ರೂಪಾಯಿ", "ಪೈಸೆ", "ಪಾಯಿಂಟ್"]
 
             },
@@ -26,7 +26,7 @@ export let language = {
                 "teens"         : ["పది", "పదకొండు","పన్నెండు","పదమూడు","పద్నాలుగు","పదిహేను", "పదహారు", "పదిహేడు", "పద్దెనిమిది", "పందొమ్మిది"],
                 "double_digits" : ["సున్నా", "పది", "ఇరవై", "ముప్పై", "నలభై", "యాభై", "అరవై", "డెబ్భై", "ఎనభై", "తొంభై"],
                 "crore_lakhs"   : ["కోట్ల", "లక్ష", "వెయ్యి", "వంద"],
-                "million_billions" : ["క్వాడ్రిలియన్", "ట్రిలియన్", "బిలియన్", "మిలియన్", "వెయ్యి"],
+                "million_billions" : ["క్వాడ్రిలియన్", "ట్రిలియన్", "బిలియన్", "మిలియన్", "వెయ్యి", "వంద"],
                 "and_currency"  : ["మరియు", "రూపాయలు", "పైజ్", "పాయింట్"]
             },
     
@@ -35,7 +35,7 @@ export let language = {
                 "teens"         : ["दस", "ग्यारह", "बारह", "तेरह", "चौदह", "पन्द्रह", "सोलह", "सत्रह", "अठारह", "उन्नीस" ],
                 "double_digits" :  ["शून्य", "दस", "बीस", "तीस", "चालीस", "पचास", "साठ", "सत्तर", "अस्सी", "नब्बे" ],
                 "crore_lakhs"   : ["करोड़", "लाख", "हजार", "सौ"],
-                "million_billions" : ["क्वाड्रलियन", "ट्रिलियन", "बिलियन", "मिलियन", "हजार"],
+                "million_billions" : ["क्वाड्रलियन", "ट्रिलियन", "बिलियन", "मिलियन", "हजार", "सौ"],
                 "and_currency"  : ["और", "रुपए", "पैसे", "बिंदु"]
             },
 
@@ -45,7 +45,7 @@ export let language = {
                 "teens"         : ["दहा", "अकरा", "बारा", "तेरा", "चौदा", "पंधरा", "सोळा", "सतरा", "अठरा", "एकोणीस" ],
                 "double_digits" :  ["शंभरा", "दहा", "वीस", "तीस", "चाळीस", "पन्नास", "साठ", "सत्तर", "अस्सी", "नब्बे" ],
                 "crore_lakhs"   : ["कोटी", "लाख", "हजार", "सौ"],
-                "million_billions" : ["क्वाड्रलियन", "ट्रिलियन", "बिलियन", "मिलियन", "हजार"],
+                "million_billions" : ["क्वाड्रलियन", "ट्रिलियन", "बिलियन", "मिलियन", "हजार", "सौ"],
                 "and_currency"  : ["आणि", "रुपया", "पैसे", "बिंदू"]
             }
 
@@ -62,7 +62,7 @@ export let language = {
     "crore", "lakh", "thousand", "hundred"
     
     
-    "quadrllion", "trillion", "billion", "million","thousand"
+    "quadrllion", "trillion", "billion", "million","thousand", "hundred"
 
     "and", "rupees", "paise"
 
