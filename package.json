@@ -4,7 +4,7 @@
   "description": "Converts to number in to words. one can get words written in any language. users can add there own language if not included",
   "main": "index.js",
   "scripts": {
-    "test": "node test.index.js; node test_typescript_index.js;"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
