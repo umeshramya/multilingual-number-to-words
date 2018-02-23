@@ -4,11 +4,7 @@ var lang = require("./language").language;
 var wordHundred = (hunNumber, lan)=>{
 		/*
 			this function returns the number from 999 to 1 in the form of hundredWords
-			This os boiler plate for all decimals 
-			has attach suffix like thousand, lakh after number in words
-			Number are passed after spliting them  
-			splits dpenden on lakh VS million need
-		
+            this is boiler plate for higher number
 		*/
 					
 		var lNumber = hunNumber;
