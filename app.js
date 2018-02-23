@@ -38,7 +38,6 @@ var wordHundred = (hunNumber, lan)=>{
         }
 
         return returnWord;
-		
 	
 
 }
@@ -46,10 +45,40 @@ var wordHundred = (hunNumber, lan)=>{
 
 
 var millonComa = (cNumber)=>{
+    // extract decimal
+    cNumber = Math.abs(cNumber); //conver to positive number
+    var stDecimal        = (cNumber - Math.floor(cNumber) ).toFixed(2);
+    stDecimal 			= stDecimal.substr(1, stDecimal.length);//remove zero be
+    var stTruncatedNumber		=  Math.floor(cNumber) + stDecimal;
+    var stWholeNumber = Math.floor(cNumber).toString();
+    var lastThree		= stWholeNumber.substr(stWholeNumber.length-3);
+    var otherNumbers	= stWholeNumber.substring(0, stWholeNumber.length-3);
+    var strComaNumber='';
 
+
+    if(otherNumbers != ''){
+        lastThree = ',' + lastThree;
+        strComaNumber = otherNumbers.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + lastThree;
+    }
+    return strComaNumber + stDecimal;
 }
 
 var lakhComa = (cNumber)=>{
+    cNumber = Math.abs(cNumber); //conver to positive number
+    var stDecimal        = (cNumber - Math.floor(cNumber) ).toFixed(2);
+    stDecimal 			= stDecimal.substr(1, stDecimal.length);//remove zero be
+    var stTruncatedNumber		=  Math.floor(cNumber) + stDecimal;
+    var stWholeNumber = Math.floor(cNumber).toString();
+    var lastThree		= stWholeNumber.substr(stWholeNumber.length-3);
+    var otherNumbers	= stWholeNumber.substring(0, stWholeNumber.length-3);
+    var strComaNumber='';
+
+
+    if(otherNumbers != ''){
+        lastThree = ',' + lastThree;
+        strComaNumber = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+    }
+    return strComaNumber + stDecimal;
 
 }
 
@@ -60,5 +89,6 @@ var millionWord = (cNumber, lang, currencyStyle=true)=>{
 var lakhWord = (cNumber, lang, currencyStyle=true)=>{
     
 } 
-
-console.log(wordHundred(214, "english"));
+var number = 203456123.44567;
+console.log(millonComa(number));
+console.log(lakhComa(number));
