@@ -7,7 +7,7 @@ exports.language = {
         "double_digits": ["zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"],
         "crore_lakhs": ["crore", "lakh", "thousand", "hundred"],
         "million_billions": ["quadrillion", "trillion", "billion", "million", "thousand", "hundred"],
-        "and_currency": ["and", "rupees", "paise", "point"]
+        "and_currency": ["and", "hundred","rupees", "paise", "point"]
     },
     "kananda": {
         "single_digits": ["ಶೂನ್ಯ", "ಒಂದು", "ಎರಡು", "ಮೂರು", "ನಾಲ್ಕು", "ಐದು", "ಆರು", "ಏಳು", "ಎಂಟು", "ಒಂಬತ್ತು"],

@@ -1,13 +1,12 @@
+var lang = require("./language").language;
 
-var lang = require("./language").language;	
 
 var wordHundred = (hunNumber, lan)=>{
-
 		/*
 			this function returns the number from 999 to 1 in the form of hundredWords
             this is boiler plate for higher number
 		*/
-		
+					
 		var lNumber = hunNumber;
         var tNumber=0;
         var returnWord = "";
@@ -17,28 +16,19 @@ var wordHundred = (hunNumber, lan)=>{
         
         if (lNumber > 99){
             tNumber = Math.floor(lNumber/100);
-            returnWord = lang[lan]["single_digits"][tNumber] + " " +  lang[lan]["and_currency"][1];
+            returnWord = lang[lan]["single_digits"][tNumber] + " " +  lang[lan]["crore_lakhs"][3];
             lNumber = lNumber - (tNumber * 100);
-            if(lNumber == 0){
-                return returnWord;
-            }
         }
 
         if (lNumber >=20){
             tNumber = Math.floor(lNumber/10);
             returnWord += " " + lang[lan]["double_digits"][tNumber];
             lNumber = lNumber - (tNumber * 10);
-            if(lNumber == 0){
-                return returnWord;
-            }
         }
 
         if (lNumber >= 10 ){
             tNumber = lNumber - 10;
             returnWord += " " +  lang[lan]["teens"][tNumber];
-            if(lNumber == 0){
-                return returnWord;
-            }
             
         }
 
@@ -69,8 +59,6 @@ var millonComa = (cNumber)=>{
     if(otherNumbers != ''){
         lastThree = ',' + lastThree;
         strComaNumber = otherNumbers.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + lastThree;
-    }else{
-        strComaNumber = stWholeNumber;
     }
     return strComaNumber + stDecimal;
 }
@@ -89,58 +77,25 @@ var lakhComa = (cNumber)=>{
     if(otherNumbers != ''){
         lastThree = ',' + lastThree;
         strComaNumber = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
-    }else{
-        strComaNumber = stWholeNumber;
     }
     return strComaNumber + stDecimal;
 
 }
-var millionWord = (cNumber, lan="english")=>{
-    return numberToWord(cNumber, lan, "million");
-}
 
-var lakhWord = (cNumber, lan="english")=>{
-    return numberToWord(cNumber, lan, "lakh");
-} 
-
-
-var numberToWord = (cNumber, lan="english", lakhOrMillion="lakh")=>{
-    var lakhMillion ="";
-    var comaNumber ="";
-
-    if (lakhOrMillion == "lakh"){
-        if (cNumber > 999999998){
-            throw (cNumber + " number is too large to handle");
-        }
-        lakhMillion = "crore_lakhs"
-        comaNumber = lakhComa(cNumber);
-        
-
-    }else if(lakhOrMillion == "million"){
-        if (cNumber > 999999999999998){
-            throw (cNumber + " number is too large to handle");
-        }
-        lakhMillion = "million_billions";
-        comaNumber = millonComa(cNumber);
-    
-    }else{
-        throw ("Invalid lakh or million argument");
-    }
+var millionWord = (cNumber, lan, currencyStyle=true)=>{
+    var comaNumber = millonComa(cNumber);
     var curArray = comaNumber.split(",");
     curArray = curArray.reverse();
-    
-    
     
     var firstItem = curArray[0];
     var stDecimal = firstItem.substr(firstItem.length-3, firstItem.length);
     curArray[0] = firstItem.substr(0, firstItem.length-3);
-   
     
    
     var curArrayLength = curArray.length;
-    var lanArray = lang[lan][lakhMillion]
+    var lanArray = lang[lan]["million_billions"]
     var lanArrayLength = lanArray.length
-    lanArray= lanArray.reverse();
+    lanArray= lanArray.reverse();  
     
     var returnWord ="";
     var words=[];
@@ -172,19 +127,11 @@ var numberToWord = (cNumber, lan="english", lakhOrMillion="lakh")=>{
 
 } 
 
-
-var number = 123224130.896;
+var lakhWord = (cNumber, lang, currencyStyle=true)=>{
+    
+} 
+var number = 203456123.3676;
 console.log(millonComa(number));
-
-console.log( millionWord(number));
-console.log( millionWord(number));
-console.log( millionWord(number));
-
-console.log("\n\n\n");
-
-console.log(lakhComa(number));
-console.log(lakhWord(number, "english"));
-console.log(lakhWord(number, "english"));
-console.log(lakhWord(number, "english"));
-
+// console.log(lakhComa(number));
+console.log( millionWord(number, "english"));
 
