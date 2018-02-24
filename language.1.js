@@ -5,24 +5,24 @@ exports.language = {
         "single_digits": ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"],
         "teens": ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"],
         "double_digits": ["zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"],
-        "crore_lakhs": ["hundred", "thousand", "lakh", "crore"],
-        "million_billions": [ "hundred", "thousand","million","billion","trillion","quadrillion"],
-        "and_currency": ["and","rupees", "paise", "point"]
+        "crore_lakhs": ["crore", "lakh", "thousand", "hundred"],
+        "million_billions": ["quadrillion", "trillion", "billion", "million", "thousand", "hundred"],
+        "and_currency": ["and", "hundred","rupees", "paise", "point"]
     },
     "kananda": {
         "single_digits": ["ಶೂನ್ಯ", "ಒಂದು", "ಎರಡು", "ಮೂರು", "ನಾಲ್ಕು", "ಐದು", "ಆರು", "ಏಳು", "ಎಂಟು", "ಒಂಬತ್ತು"],
         "teens": ["ಹತ್ತು", "ಹನ್ನೊಂದು", "ಹನ್ನೆರಡು", "ಹದಿಮೂರು", "ಹದಿನಾಲ್ಕು", "ಹದಿನೈದು", "ಹದಿನಾರು", "ಹದಿನೇಳು", "ಹದಿನೆಂಟು", "ಹತ್ತೊಂಬತ್ತು"],
         "double_digits": ["ಶೂನ್ಯ", "ಹತ್ತು", "ಇಪ್ಪತ್ತು", "ಮೂವತ್ತು", "ನಲವತ್ತು", "ಐವತ್ತು", "ಅರವತ್ತು ", "ಎಪ್ಪತ್ತು", "ಎಂಭತ್ತು", "ತೊಂಬತ್ತು"],
-        "crore_lakhs": ["ನೂರು", "ಸಾವಿರ", "ಲಕ್ಷ", "ಕೋಟಿ" ],
-        "million_billions": [ 'ನೂರು','ಸಾವಿರ','ಮಿಲಿಯನ್', 'ಬಿಲಿಯನ್','ಟ್ರಿಲಿಯನ್','ಕ್ವಾಡ್ರಿಲಿಯನ್'],
+        "crore_lakhs": ["ಕೋಟಿ", "ಲಕ್ಷ", "ಸಾವಿರ", "ನೂರು"],
+        "million_billions": ["ಕ್ವಾಡ್ರಿಲಿಯನ್", "ಟ್ರಿಲಿಯನ್", "ಬಿಲಿಯನ್", "ಮಿಲಿಯನ್", "ಸಾವಿರ", , "ನೂರು"],
         "and_currency": ["ಮತ್ತು", "ರೂಪಾಯಿ", "ಪೈಸೆ", "ಪಾಯಿಂಟ್"]
     },
     "telagu": {
         "single_digits": ["సున్నా", "ఒక", "రెండు", "మూడు", "నాలుగు", "ఐదు", "ఆరు", "ఏడు", "ఎనిమిది", "తొమ్మిది"],
         "teens": ["పది", "పదకొండు", "పన్నెండు", "పదమూడు", "పద్నాలుగు", "పదిహేను", "పదహారు", "పదిహేడు", "పద్దెనిమిది", "పందొమ్మిది"],
         "double_digits": ["సున్నా", "పది", "ఇరవై", "ముప్పై", "నలభై", "యాభై", "అరవై", "డెబ్భై", "ఎనభై", "తొంభై"],
-        "crore_lakhs": ["వంద", "వెయ్యి", "లక్ష", "కోట్ల"],
-        "million_billions": ["వంద", "వెయ్యి", "మిలియన్", "బిలియన్","ట్రిలియన్","క్వాడ్రిలియన్"],
+        "crore_lakhs": ["కోట్ల", "లక్ష", "వెయ్యి", "వంద"],
+        "million_billions": ["క్వాడ్రిలియన్", "ట్రిలియన్", "బిలియన్", "మిలియన్", "వెయ్యి", "వంద"],
         "and_currency": ["మరియు", "రూపాయలు", "పైజ్", "పాయింట్"]
     },
     "hindi": {

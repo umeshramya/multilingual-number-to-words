@@ -17,7 +17,7 @@ var wordHundred = (hunNumber, lan)=>{
         
         if (lNumber > 99){
             tNumber = Math.floor(lNumber/100);
-            returnWord = lang[lan]["single_digits"][tNumber] + " " +  lang[lan]["and_currency"][1];
+            returnWord = lang[lan]["single_digits"][tNumber] + " " +  lang[lan]["crore_lakhs"][0];
             lNumber = lNumber - (tNumber * 100);
             if(lNumber == 0){
                 return returnWord;
@@ -140,7 +140,7 @@ var numberToWord = (cNumber, lan="english", lakhOrMillion="lakh")=>{
     var curArrayLength = curArray.length;
     var lanArray = lang[lan][lakhMillion]
     var lanArrayLength = lanArray.length
-    lanArray= lanArray.reverse();
+    // lanArray= lanArray.reverse();
     
     var returnWord ="";
     var words=[];
