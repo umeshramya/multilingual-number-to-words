@@ -52,8 +52,6 @@ var wordHundred = (hunNumber, lan)=>{
 
 }
 
-
-
 var millonComa = (cNumber)=>{
     // extract decimal
     cNumber = Math.abs(cNumber); //conver to positive number
@@ -102,7 +100,6 @@ var millionWord = (cNumber, lan="english")=>{
 var lakhWord = (cNumber, lan="english")=>{
     return numberToWord(cNumber, lan, "lakh");
 } 
-
 
 var numberToWord = (cNumber, lan="english", lakhOrMillion="lakh")=>{
     var lakhMillion ="";
@@ -172,7 +169,11 @@ var numberToWord = (cNumber, lan="english", lakhOrMillion="lakh")=>{
 
 } 
 
-
+/* 
+==============
+    Test
+==============
+*/ 
 var number = 123224130.896;
 console.log(millonComa(number));
 
