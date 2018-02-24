@@ -139,7 +139,8 @@ var numberToWord = (cNumber, lan="english", lakhOrMillion="lakh")=>{
     var lanArrayLength = lanArray.length
     // lanArray= lanArray.reverse();
     
-    var returnWord ="";
+    var returnArray = [];
+    var returnWholeNumber ="";
     var words=[];
     for (let i = 0 ; i < curArrayLength; i++) {
         // code for words
@@ -153,18 +154,40 @@ var numberToWord = (cNumber, lan="english", lakhOrMillion="lakh")=>{
     words = words.reverse();
 
     for (let j = 0; j < words.length; j++) {
-        returnWord += words[j] + " " ;
+        returnWholeNumber += words[j] + " " ;
         
     }
-    returnWord = returnWord.trim();
+    returnWholeNumber = returnWholeNumber.trim();
 
-    var returndecimal ="";
+    var returnDecimal ="";
+    var returnDecimalCurrency="";
+    var returnDecimalClassic = "";
     if(stDecimal != ".00"){
-        returndecimal = lang[lan]["and_currency"][0] + " " + wordHundred(parseInt(stDecimal.substr(1, 2)),lan).trim();   
+
+
+        var firtDecimal = lang[lan]["single_digits"][parseInt(stDecimal.substr(1,1))];
+        var secondDecimal = lang[lan]["single_digits"][parseInt( stDecimal.substr(2,2))];
+
+        returnDecimalClassic =lang[lan]["and_currency"][3] + " " +  firtDecimal + " "  + secondDecimal;
+
+        if(stDecimal.substr(1,1) === "0"){
+            returnDecimal = returnDecimalClassic
+            returnDecimalCurrency = returnDecimalClassic+ " " + lang[lan]["and_currency"][2];
+        }else{
+            returnDecimal = lang[lan]["and_currency"][0] + " " + wordHundred(parseInt(stDecimal.substr(1, 2)),lan).trim();
+
+            returnDecimalCurrency =lang[lan]["and_currency"][0] + " " + wordHundred(parseInt(stDecimal.substr(1, 2)),lan).trim() + " " + lang[lan]["and_currency"][2];
+        }
+
     }
     
+    returnArray[0] = returnWholeNumber.trim() + " " + returnDecimal.trim();
+    returnArray[1] = ((lang[lan]["and_currency"][1] + " " + returnWholeNumber.trim()).trim() + " " + returnDecimalCurrency.trim()).trim();
+    returnArray[2] = (returnWholeNumber.trim()  + " " + returnDecimalClassic.trim()).trim();
 
-    return (returnWord + " " + returndecimal).trim();
+
+
+   return returnArray;
     
 
 } 
@@ -174,18 +197,18 @@ var numberToWord = (cNumber, lan="english", lakhOrMillion="lakh")=>{
     Test
 ==============
 */ 
-var number = 123224130.896;
+var number = 4130.2;
 console.log(millonComa(number));
 
 console.log( millionWord(number));
-console.log( millionWord(number));
-console.log( millionWord(number));
+// console.log( millionWord(number));
+// console.log( millionWord(number));
 
 console.log("\n\n\n");
 
 console.log(lakhComa(number));
 console.log(lakhWord(number, "english"));
-console.log(lakhWord(number, "english"));
-console.log(lakhWord(number, "english"));
+// console.log(lakhWord(number, "english"));
+// console.log(lakhWord(number, "english"));
 
 

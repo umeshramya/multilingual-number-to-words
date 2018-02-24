@@ -17,7 +17,7 @@ As of now Version 3.0.0 following languages are included in this project
 use this command to include as a node module
 ###### npm i multilingual-number-to-words
 
-## Fetures
+## Features
 1. Index file contains the code and language file contains JSON of languages
 2. Decimal value truncated to two degits
 
