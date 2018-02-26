@@ -48,8 +48,8 @@ let french = {
 "single_digits" : ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"],
 "teens" : ["dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"],
 "double_digits" : ["zéro", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante-dix", "quatre-vingts", "quatre-vingt-dix" ],
-"crore_lakhs" : ["crore", "lakh", "mille", "cent"],
-"million_billions" : ["quadrillion", "billion", "billion", "million", "mille", "cent"],
+"crore_lakhs" : ["cent", "mille", "lakh", "crore"],
+"million_billions" : ["cent", "mille", "million", "billion", "billion", "quadrillion"],
 "and_currency" : ["et", "roupies", "paise", "point"]
 }
 

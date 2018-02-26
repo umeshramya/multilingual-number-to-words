@@ -207,34 +207,5 @@ var numberToWord = (cNumber, lan="english", lakhOrMillion="lakh")=>{
 
 } 
 
-/* 
-==============
-    Test
-==============
-*/ 
-
-var french = {
-    "single_digits" : ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"],
-    "teens" : ["dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"],
-    "double_digits" : ["zéro", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante-dix", "quatre-vingts", "quatre-vingt-dix" ],
-    "crore_lakhs" : ["crore", "lakh", "mille", "cent"],
-    "million_billions" : ["quadrillion", "billion", "billion", "million", "mille", "cent"],
-    "and_currency" : ["et", "roupies", "paise", "point"]
-    }
-addLanguage("french", french);
-
-var number = 4130.2;
-console.log(millonComa(number));
-
-console.log( millionWord(number, "french"));
-// console.log( millionWord(number));
-// console.log( millionWord(number));
-
-console.log("\n\n\n");
-
-console.log(lakhComa(number));
-console.log(lakhWord(number, "english"));
-// console.log(lakhWord(number, "english"));
-// console.log(lakhWord(number, "english"));
 
 
