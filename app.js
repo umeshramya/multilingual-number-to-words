@@ -79,7 +79,7 @@ var millonComa = (cNumber)=>{
     return strComaNumber + stDecimal;
 }
 
-module.exports.millionWord = millionWord;
+module.exports.millonComa = millonComa;
 
 var lakhComa = (cNumber)=>{
     cNumber = Math.abs(cNumber); //conver to positive number
