@@ -1,5 +1,11 @@
 
-var lang = require("./language").language;	
+var lang = require("./language").language;
+
+var addLanguage = (newLanguage, json) =>{
+    lang[newLanguage] = json;
+}
+
+module.exports.addLanguage = addLanguage;
 
 var wordHundred = (hunNumber, lan)=>{
 
@@ -73,6 +79,8 @@ var millonComa = (cNumber)=>{
     return strComaNumber + stDecimal;
 }
 
+module.exports.millionWord = millionWord;
+
 var lakhComa = (cNumber)=>{
     cNumber = Math.abs(cNumber); //conver to positive number
     var stDecimal        = (cNumber - Math.floor(cNumber) ).toFixed(2);
@@ -93,13 +101,20 @@ var lakhComa = (cNumber)=>{
     return strComaNumber + stDecimal;
 
 }
+
+module.exports.lakhComa = lakhComa;
+
 var millionWord = (cNumber, lan="english")=>{
     return numberToWord(cNumber, lan, "million");
 }
 
+module.exports.millionWord = millionWord;
+
 var lakhWord = (cNumber, lan="english")=>{
     return numberToWord(cNumber, lan, "lakh");
 } 
+module.exports.lakhWord = lakhWord;
+
 
 var numberToWord = (cNumber, lan="english", lakhOrMillion="lakh")=>{
     var lakhMillion ="";
