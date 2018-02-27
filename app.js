@@ -58,7 +58,7 @@ var wordHundred = (hunNumber, lan)=>{
 
 }
 
-var millonComa = (cNumber)=>{
+var millonComma = (cNumber)=>{
     // extract decimal
     cNumber = Math.abs(cNumber); //conver to positive number
     var stDecimal        = (cNumber - Math.floor(cNumber) ).toFixed(2);
@@ -67,21 +67,21 @@ var millonComa = (cNumber)=>{
     var stWholeNumber = Math.floor(cNumber).toString();
     var lastThree		= stWholeNumber.substr(stWholeNumber.length-3);
     var otherNumbers	= stWholeNumber.substring(0, stWholeNumber.length-3);
-    var strComaNumber='';
+    var strCommaNumber='';
 
 
     if(otherNumbers != ''){
         lastThree = ',' + lastThree;
-        strComaNumber = otherNumbers.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + lastThree;
+        strCommaNumber = otherNumbers.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + lastThree;
     }else{
-        strComaNumber = stWholeNumber;
+        strCommaNumber = stWholeNumber;
     }
-    return strComaNumber + stDecimal;
+    return strCommaNumber + stDecimal;
 }
 
-module.exports.millonComa = millonComa;
+module.exports.millonComma = millonComma;
 
-var lakhComa = (cNumber)=>{
+var lakhComma = (cNumber)=>{
     cNumber = Math.abs(cNumber); //conver to positive number
     var stDecimal        = (cNumber - Math.floor(cNumber) ).toFixed(2);
     stDecimal 			= stDecimal.substr(1, stDecimal.length);//remove zero be
@@ -89,20 +89,20 @@ var lakhComa = (cNumber)=>{
     var stWholeNumber = Math.floor(cNumber).toString();
     var lastThree		= stWholeNumber.substr(stWholeNumber.length-3);
     var otherNumbers	= stWholeNumber.substring(0, stWholeNumber.length-3);
-    var strComaNumber='';
+    var strCommaNumber='';
 
 
     if(otherNumbers != ''){
         lastThree = ',' + lastThree;
-        strComaNumber = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+        strCommaNumber = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
     }else{
-        strComaNumber = stWholeNumber;
+        strCommaNumber = stWholeNumber;
     }
-    return strComaNumber + stDecimal;
+    return strCommaNumber + stDecimal;
 
 }
 
-module.exports.lakhComa = lakhComa;
+module.exports.lakhComma = lakhComma;
 
 var millionWord = (cNumber, lan="english")=>{
     return numberToWord(cNumber, lan, "million");
@@ -118,14 +118,14 @@ module.exports.lakhWord = lakhWord;
 
 var numberToWord = (cNumber, lan="english", lakhOrMillion="lakh")=>{
     var lakhMillion ="";
-    var comaNumber ="";
+    var commaNumber ="";
 
     if (lakhOrMillion == "lakh"){
         if (cNumber > 999999998){
             throw (cNumber + " number is too large to handle");
         }
         lakhMillion = "crore_lakhs"
-        comaNumber = lakhComa(cNumber);
+        commaNumber = lakhComma(cNumber);
         
 
     }else if(lakhOrMillion == "million"){
@@ -133,12 +133,12 @@ var numberToWord = (cNumber, lan="english", lakhOrMillion="lakh")=>{
             throw (cNumber + " number is too large to handle");
         }
         lakhMillion = "million_billions";
-        comaNumber = millonComa(cNumber);
+        commaNumber = millonComma(cNumber);
     
     }else{
         throw ("Invalid lakh or million argument");
     }
-    var curArray = comaNumber.split(",");
+    var curArray = commaNumber.split(",");
     curArray = curArray.reverse();
     
     
