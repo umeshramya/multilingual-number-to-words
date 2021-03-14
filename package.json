@@ -1,6 +1,6 @@
 {
   "name": "multilingual-number-to-words",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "description": "Converts to number in to words. one can get words written in any language. users can add there own language if not included",
   "main": "app.js",
   "scripts": {
