@@ -159,17 +159,27 @@ var numberToWord = (cNumber, lan="english", lakhOrMillion="lakh")=>{
     var words=[];
     for (let i = 0 ; i < curArrayLength; i++) {
         // code for words
+
+    if(parseInt(curArray[i])== 0){
+        words[i]="";
+    }else{
         if (i == 0){
             words[i] = wordHundred(parseInt(curArray[i]),lan)
 
         }else{
             words[i] = wordHundred(parseInt(curArray[i]),lan) + " " + lanArray[i];
         }
+
+    }
+        
     }
     words = words.reverse();
 
     for (let j = 0; j < words.length; j++) {
-        returnWholeNumber += words[j] + " " ;
+        if(words[j] !== ""){
+            returnWholeNumber += words[j] + " " ;
+        }
+        
         
     }
     returnWholeNumber = returnWholeNumber.trim();
