@@ -1,0 +1,1 @@
+{"version":3,"file":"singleDigits.d.ts","sourceRoot":"","sources":["../../../src/classes/hubndreds/singleDigits.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,GAAG,EAAE,IAAI,EAAE,MAAM,yBAAyB,CAAC;AAGpD,MAAM,CAAC,OAAO,OAAO,MAAO,YAAW,IAAI;IACvC,OAAO,CAAC,IAAI,CAAI;gBAEJ,GAAG,EAAC,GAAG;IAInB,OAAO,CAAC,OAAO,EAAC,MAAM,GAAE,MAAM;CAWjC"}

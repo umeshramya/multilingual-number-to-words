@@ -1,7 +1,7 @@
-import lan from "../../config/language"
-import { LAN } from "../../config/interfaces";
+import { LAN, WORD } from "../../config/interfaces";
 
-export default class Single{
+
+export default class Single implements WORD{
     private _lan:LAN
 
     constructor(lan:LAN){

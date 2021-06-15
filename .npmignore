@@ -63,3 +63,17 @@ typings/
 # dotenv environment variables file
 .env
 
+
+
+
+# yalc/
+    yalc/
+#yalc-lock
+yalc-lock
+
+
+test/
+
+
+test/yalc
+test/yalc-lock

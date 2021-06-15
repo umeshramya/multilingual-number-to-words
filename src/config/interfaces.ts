@@ -11,15 +11,12 @@ interface LAN{
         and_currency: string_array_4
 }
 
-// interface LAN{
-//     single_digits: string[10];
-//     teens: string[10];
-//     double_digits: string[10];
-//     crore_lakhs: string[4];
-//     million_billions: string[6];
-//     and_currency: string[4]
-// }
+interface WORD{
+        getWord(_number:Number):string;
+}
 
 
 
-export {LAN}
+
+
+export {LAN, WORD}
