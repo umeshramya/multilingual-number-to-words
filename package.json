@@ -2,9 +2,10 @@
   "name": "multilingual-number-to-words",
   "version": "5.0.4",
   "description": "Converts to number in to words. one can get words written in any language. users can add there own language if not included",
-  "main": "app.js",
+  "main": "build index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node build/index.js",
+    "build" : "tsc -p ."
   },
   "repository": {
     "type": "git",
