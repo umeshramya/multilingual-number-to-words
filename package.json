@@ -6,7 +6,7 @@
   "types": "lib",
   "scripts": {
     "start": "node build/index.js",
-    "dev" : "tsc -p . && yalc publish && cd test && yalc update multilingual-number-to-words"
+    "dev" : "tsc -p . && yalc publish && cd test && yalc update multilingual-number-to-words && node index"
   },
   "repository": {
     "type": "git",
