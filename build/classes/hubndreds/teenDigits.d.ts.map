@@ -1,0 +1,1 @@
+{"version":3,"file":"teenDigits.d.ts","sourceRoot":"","sources":["../../../src/classes/hubndreds/teenDigits.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,GAAG,EAAE,IAAI,EAAE,MAAM,yBAAyB,CAAC;AAEpD,MAAM,CAAC,OAAO,OAAO,UAAW,YAAW,IAAI;IAC3C,OAAO,CAAC,IAAI,CAAK;gBACL,GAAG,EAAC,GAAG;IAInB,OAAO,CAAC,OAAO,EAAC,MAAM,GAAE,MAAM;CASjC"}
