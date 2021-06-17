@@ -12,4 +12,5 @@ declare class NumberToWord {
     convertToComaSeparetedString: (_number: number, style?: NumberToWordStyle) => string;
 }
 export { NumberToWord };
+export type { NumberToWordStyle };
 //# sourceMappingURL=index.d.ts.map

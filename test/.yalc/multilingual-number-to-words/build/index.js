@@ -21,17 +21,20 @@ var NumberToWord = /** @class */ (function () {
             var ret = "";
             var hundradpart = numberString.slice(numberString.length - 3, numberString.length);
             numberString = numberString.slice(0, numberString.length - 3);
+            var stringArray = [];
+            numberString = numberString.split("").reverse().join("");
             if (numberString.length > 3) {
                 if (style === "MillionAndBillion") {
                     var loop = true;
                     var index = 0;
                     while (loop) {
-                        if (index > numberString.length) {
-                            loop = false;
+                        if (index < numberString.length) {
+                            var temp = numberString.substring(index, index + 3);
+                            stringArray.push(temp);
+                            index = index + 3;
                         }
                         else {
-                            ret = "" + ret + numberString.slice(index, 3) + ",";
-                            index = index + 3;
+                            loop = false;
                         }
                     }
                 }
@@ -39,8 +42,9 @@ var NumberToWord = /** @class */ (function () {
                     var loop = true;
                     var index = 0;
                     while (loop) {
-                        if (index > numberString.length) {
-                            ret = "" + ret + numberString.slice(index, 2) + ",";
+                        if (index < numberString.length) {
+                            var temp = numberString.substring(index, index + 2);
+                            stringArray.push(temp);
                             index = index + 2;
                         }
                         else {
@@ -48,12 +52,13 @@ var NumberToWord = /** @class */ (function () {
                         }
                     }
                 }
-                ret = ret + "," + hundradpart;
             }
-            else {
-                ret = hundradpart;
-            }
-            return numberString;
+            var RetArray = stringArray.map(function (el) {
+                return el.split("").reverse().join("");
+            });
+            RetArray.reverse().push(hundradpart);
+            ret = RetArray.toString();
+            return ret;
         };
         this._lan = lan;
     }

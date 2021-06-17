@@ -27,7 +27,10 @@ class NumberToWord{
         let ret = ""
         let hundradpart = numberString.slice(numberString.length -3, numberString.length)
         numberString = numberString.slice(0, numberString.length -3);
-   
+        let stringArray:string[] =[]
+
+        numberString = numberString.split("").reverse().join("");
+ 
 
         if(numberString.length > 3){
 
@@ -35,23 +38,30 @@ class NumberToWord{
                 let loop=true;
                 let index =0
                 while(loop){
-                    if(index > numberString.length){
-                        loop = false;
-                    }else{
-                        ret =`${ret}${numberString.slice(index, 3)},`
+                    
+                    if(index < numberString.length){
+                        let temp = numberString.substring(index, index + 3)
+                        stringArray.push(temp)
                         index = index + 3;
+                       
+                    }else{
+                        loop = false;
                     }
+
+                    
                 }
 
             }else{
-
+               
                 let loop=true;
                 let index =0
                 while(loop){
-                    if(index > numberString.length){
-                        ret =`${ret}${numberString.slice(index, 2)},`
+                    
+                    if(index < numberString.length){
+                        let temp = numberString.substring(index, index + 2)
+                        stringArray.push(temp)
                         index = index + 2;
-
+                       
                     }else{
                         loop = false;
                     }
@@ -60,19 +70,25 @@ class NumberToWord{
                 }
 
             }
-            ret = `${ret},${hundradpart}`
-        }else{
-            ret = hundradpart;
         }
 
+            let RetArray = stringArray.map(el=>{
+               return el.split("").reverse().join("");
+            })
+
+            RetArray.reverse().push(hundradpart)
+
+            ret = RetArray.toString()
        
-        return numberString;
+
+            return ret;
     
     }
 
 }
 
 export {NumberToWord}
+export type {NumberToWordStyle}
 
 
 
