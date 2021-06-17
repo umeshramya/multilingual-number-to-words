@@ -1,4 +1,4 @@
-import { LAN, WORD } from "../../config/interfaces";
+import { LAN, NumberToWordStyle, WORD } from "../../config/interfaces";
 import SingleDigits from "./singleDigits"
 
 export default class Hundred implements WORD{
@@ -25,5 +25,52 @@ export default class Hundred implements WORD{
       
         return ret;
     }
+
+    private convertToComaSeparetedString = (_number:number, style:NumberToWordStyle):string=>{
+
+        let numberString = `${_number}`;
+        let ret = ""
+        let hundradpart = numberString.slice(numberString.length -3, numberString.length)
+        numberString = numberString.slice(0, numberString.length -3);
+
+        if(numberString.length > 3){
+            if(style === "MillionAndBillion"){
+                let loop=true;
+                let index =0
+                while(loop){
+                    if(index > numberString.length){
+                        loop = false;
+                    }else{
+                        ret =`${ret}${numberString.slice(index, 3)},`
+                        index = index + 3;
+                    }
+                }
+
+            }else{
+
+                let loop=true;
+                let index =0
+                while(loop){
+                    if(index > numberString.length){
+                        loop = false;
+                    }else{
+                        ret =`${ret}${numberString.slice(index, 2)},`
+                        index = index + 2;
+                    }
+
+                    
+                }
+
+            }
+            ret = `${ret},${hundradpart}`
+        }else{
+            ret = hundradpart;
+        }
+
+       
+        return numberString;
+    
+    }
+
 
 }

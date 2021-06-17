@@ -2,6 +2,10 @@ type string_array_10 = [string, string, string, string, string, string, string, 
 type string_array_4 = [string, string, string, string]
 type string_array_6 = [string, string, string, string, string, string]
 
+type NumberToWordStyle = "LakhsAndCrore" | "MillionAndBillion"
+
+
+
 interface LAN{
         single_digits: string_array_10;
         teens: string_array_10;
@@ -19,4 +23,7 @@ interface WORD{
 
 
 
+
+
 export {LAN, WORD}
+export type {NumberToWordStyle}
