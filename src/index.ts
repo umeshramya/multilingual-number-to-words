@@ -88,7 +88,7 @@ class NumberToWord{
 }
 
 export {NumberToWord}
-export type {NumberToWordStyle}
+// export type {NumberToWordStyle}
 
 
 

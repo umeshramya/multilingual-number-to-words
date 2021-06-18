@@ -1,12 +1,10 @@
 {
   "name": "multilingual-number-to-words",
-  "version": "5.0.4+b93d6eed",
+  "version": "5.0.4+8b1f1809",
   "description": "Converts to number in to words. one can get words written in any language. users can add there own language if not included",
-  "main": "build/index.js",
-  "types": "lib",
+  "main": "lib/index.js",
   "scripts": {
-    "start": "node build/index.js",
-    "dev": "tsc -p . && yalc publish && cd test && yalc update multilingual-number-to-words && node index"
+    "dev": "tsc && yalc publish && cd test && yalc update multilingual-number-to-words && node index"
   },
   "repository": {
     "type": "git",
@@ -24,5 +22,8 @@
     "url": "https://github.com/umeshramya/multilingual-number-to-words/issues"
   },
   "homepage": "https://github.com/umeshramya/multilingual-number-to-words#readme",
-  "yalcSig": "b93d6eedf643b07b97581075d749f331"
+  "files": [
+    "lib/**/*"
+  ],
+  "yalcSig": "8b1f1809d88214e26683d3755c85c374"
 }
