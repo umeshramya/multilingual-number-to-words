@@ -1,5 +1,5 @@
 import Hundrad from "./classes/hubndreds/hundred"
-import {english} from "./config/language"
+import {english, kananda, telagu, marathi,hindi} from "./config/language"
 import {LAN, NumberToWordStyle} from "./config/interfaces"
 
 
@@ -16,13 +16,12 @@ class NumberToWord{
         return ret;
     }
     /**
-     * This function converts number into comaseparted string
+     * This function converts number into comaseparted string array
      * @param _number  "LakhsAndCrore" | "MillionAndBillion"
      * @param style 
-     * @returns string
+     * @returns string[]
      */
-    public convertToComaSeparetedString = (_number:number, style:NumberToWordStyle="LakhsAndCrore"):string=>{
-
+    private convertComaSepartedArray = (_number:number, style:NumberToWordStyle="LakhsAndCrore"):string[]=>{
         let numberString = `${_number}`;
         let ret = ""
         let hundradpart = numberString.slice(numberString.length -3, numberString.length)
@@ -77,18 +76,24 @@ class NumberToWord{
             })
 
             RetArray.reverse().push(hundradpart)
+            return RetArray;
 
-            ret = RetArray.toString()
-       
+    }
 
-            return ret;
-    
+    /**
+     * This function converts number into comaseparted string
+     * @param _number  "LakhsAndCrore" | "MillionAndBillion"
+     * @param style 
+     * @returns string
+     */
+    public convertToComaSeparetedString = (_number:number, style:NumberToWordStyle="LakhsAndCrore"):string=>{
+        return this.convertComaSepartedArray(_number, style).toString();
     }
 
 }
 
-export {NumberToWord}
-// export type {NumberToWordStyle}
+export {NumberToWord,  english, kananda, telagu, marathi,hindi}
+export type {LAN}
 
 
 
