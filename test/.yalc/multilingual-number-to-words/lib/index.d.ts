@@ -20,5 +20,5 @@ declare class NumberToWord {
     convertToComaSeparetedString: (_number: number, style?: NumberToWordStyle) => string;
 }
 export { NumberToWord, english, kananda, telagu, marathi, hindi };
-export type { NumberToWordStyle };
+export type { LAN };
 //# sourceMappingURL=index.d.ts.map
