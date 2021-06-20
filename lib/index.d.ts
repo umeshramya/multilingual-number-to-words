@@ -3,7 +3,7 @@ import { LAN, NumberToWordStyle } from "./config/interfaces";
 declare class NumberToWord {
     private _lan;
     constructor(lan?: LAN);
-    getWord(_number: number): string;
+    getWord(_number: number, _style?: NumberToWordStyle): string;
     /**
      * This function converts number into comaseparted string array
      * @param _number  "LakhsAndCrore" | "MillionAndBillion"

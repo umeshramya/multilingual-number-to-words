@@ -26,7 +26,7 @@ class NumberToWord {
             numberString = numberString.slice(0, numberString.length - 3);
             let stringArray = [];
             numberString = numberString.split("").reverse().join("");
-            if (numberString.length > 3) {
+            if (numberString.length > 0) {
                 if (style === "MillionAndBillion") {
                     let loop = true;
                     let index = 0;
@@ -73,9 +73,25 @@ class NumberToWord {
         };
         this._lan = lan;
     }
-    getWord(_number) {
+    getWord(_number, _style = "LakhsAndCrore") {
         let ret = "";
-        ret = new hundred_1.default(this._lan).getWord(_number);
+        let hundrad = new hundred_1.default(this._lan);
+        let numberArray = this.convertComaSepartedArray(_number, _style);
+        console.log(numberArray);
+        let numberStringArray = numberArray.map((el, i) => {
+            let numberWord = hundrad.getWord(parseInt(el));
+            let place = "";
+            if (_style === "LakhsAndCrore" && i < numberArray.length - 1) {
+                place = this._lan.crore_lakhs[numberArray.length - 1 - i];
+            }
+            else if (_style === "MillionAndBillion" && i < numberArray.length - 1) {
+                place = this._lan.million_billions[numberArray.length - 1 - i];
+            }
+            return `${numberWord} ${place}`;
+        });
+        numberStringArray.forEach(el => {
+            ret = ret + " " + el;
+        });
         return ret;
     }
 }

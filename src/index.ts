@@ -10,9 +10,29 @@ class NumberToWord{
         this._lan = lan
     }
 
-    getWord(_number:number):string{
+    getWord(_number:number, _style:NumberToWordStyle="LakhsAndCrore"):string{
+
         let ret="";
-        ret = new Hundrad(this._lan).getWord(_number);
+        let hundrad = new Hundrad(this._lan)
+        let numberArray = this.convertComaSepartedArray(_number,_style);
+        console.log(numberArray)
+        let numberStringArray :string[] = numberArray.map((el, i)=>{
+            let numberWord = hundrad.getWord(parseInt(el));
+            let place:string=""
+
+
+            if(_style === "LakhsAndCrore" && i <  numberArray.length-1){
+              place =  this._lan.crore_lakhs[numberArray.length-1 - i]
+              
+            }else if(_style === "MillionAndBillion" && i <  numberArray.length-1){
+                place = this._lan.million_billions[numberArray.length -1 - i]
+            }
+            return `${numberWord} ${place}`;
+        })
+        numberStringArray.forEach(el=>{
+            ret = ret + " " + el;
+        })
+        
         return ret;
     }
     /**
@@ -31,7 +51,7 @@ class NumberToWord{
         numberString = numberString.split("").reverse().join("");
  
 
-        if(numberString.length > 3){
+        if(numberString.length > 0){
 
             if(style === "MillionAndBillion"){
                 let loop=true;
