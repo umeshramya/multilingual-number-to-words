@@ -69,3 +69,5 @@ Only trasalate array elements.
         "and_currency": ["and","rupees", "paise", "point"]
     }
 ```
+
+## To do
