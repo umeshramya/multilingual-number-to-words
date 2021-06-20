@@ -1,0 +1,205 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>multilingual-number-to-words</title>
+	<meta name="description" content="Documentation for multilingual-number-to-words">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">multilingual-number-to-words</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>multilingual-number-to-words</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#multilingual-number-to-words" id="multilingual-number-to-words" style="color: inherit; text-decoration: none;">
+					<h1>multilingual-number-to-words</h1>
+				</a>
+				<p><img src="https://img.shields.io/badge/version-5.0.3-green.svg" alt="verson">
+				<img src="https://img.shields.io/badge/License-MIT-yellowgreen.svg" alt="License"></p>
+				<p>This converts to number in to words. one can get words written in any language. users can add there own language if not included. It also gives numbers in comma separated fashion. one can get results for both lakhs-crore and also in million-billion format</p>
+				<p>As of now Version 3.0.0 following languages are included in this project</p>
+				<ol>
+					<li>english (default)</li>
+					<li>kananda</li>
+					<li>hindi</li>
+					<li>telagu</li>
+					<li>marathi
+						<a href="#to-add-languages-to-this-module-kindly-read-below" id="to-add-languages-to-this-module-kindly-read-below" style="color: inherit; text-decoration: none;">
+							<h5>To add languages to this module kindly read below</h5>
+						</a>
+					</li>
+				</ol>
+				<a href="#how-to-use" id="how-to-use" style="color: inherit; text-decoration: none;">
+					<h2>How to use</h2>
+				</a>
+				<p>use this command to include as a node module</p>
+				<a href="#npm-i-multilingual-number-to-words" id="npm-i-multilingual-number-to-words" style="color: inherit; text-decoration: none;">
+					<h6>npm i multilingual-number-to-words</h6>
+				</a>
+				<a href="#features" id="features" style="color: inherit; text-decoration: none;">
+					<h2>Features</h2>
+				</a>
+				<ol>
+					<li>Index file contains the code and language file contains JSON of languages</li>
+					<li>Decimal value truncated to two degits</li>
+				</ol>
+				<a href="#note-maximum-number-for-crore-and-lakh-conversion-is-999999998" id="note-maximum-number-for-crore-and-lakh-conversion-is-999999998" style="color: inherit; text-decoration: none;">
+					<h6>Note maximum number for crore and lakh conversion is 999999998</h6>
+				</a>
+				<a href="#note-maximum-number-for-million-and-billion-conversions-is-999999999999998" id="note-maximum-number-for-million-and-billion-conversions-is-999999999999998" style="color: inherit; text-decoration: none;">
+					<h6>Note maximum number for million and billion conversions is 999999999999998</h6>
+				</a>
+				<pre><code><span style="color: #0000FF">var</span><span style="color: #000000"> </span><span style="color: #001080">curValue</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;multilingual-number-to-words&quot;</span><span style="color: #000000">);</span>
+
+<span style="color: #0000FF">var</span><span style="color: #000000"> </span><span style="color: #001080">Num</span><span style="color: #000000"> = </span><span style="color: #098658">9873767.78</span><span style="color: #000000">;</span>
+<span style="color: #001080">curValue</span><span style="color: #000000">.</span><span style="color: #795E26">lakhWord</span><span style="color: #000000">(</span><span style="color: #001080">Num</span><span style="color: #000000">); </span><span style="color: #008000">//return words in lakh crore in english</span>
+<span style="color: #001080">curValue</span><span style="color: #000000">.</span><span style="color: #795E26">millionWord</span><span style="color: #000000">(</span><span style="color: #001080">Num</span><span style="color: #000000">); </span><span style="color: #008000">//return words millio in english</span>
+
+<span style="color: #008000">// in hindi, kananada, telagu, marati</span>
+<span style="color: #001080">curValue</span><span style="color: #000000">.</span><span style="color: #795E26">lakhWord</span><span style="color: #000000">(</span><span style="color: #001080">Num</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;hindi&quot;</span><span style="color: #000000">); </span><span style="color: #008000">//return words in lakh crore in hindi</span>
+<span style="color: #001080">curValue</span><span style="color: #000000">.</span><span style="color: #795E26">millionWord</span><span style="color: #000000">(</span><span style="color: #001080">Num</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;hindi&quot;</span><span style="color: #000000">); </span><span style="color: #008000">//return words millio in hindi</span>
+
+<span style="color: #001080">curValue</span><span style="color: #000000">.</span><span style="color: #795E26">lakhComma</span><span style="color: #000000">(</span><span style="color: #001080">Num</span><span style="color: #000000">) </span><span style="color: #008000">// return number by comma spartation lakh and crore format</span>
+<span style="color: #001080">curValue</span><span style="color: #000000">.</span><span style="color: #795E26">millonComma</span><span style="color: #000000">(</span><span style="color: #001080">Num</span><span style="color: #000000">) </span><span style="color: #008000">// return number by comma spartation million and billion format</span>
+
+</code></pre>
+				<a href="#use-your-own-language-in-as-json" id="use-your-own-language-in-as-json" style="color: inherit; text-decoration: none;">
+					<h3>Use your own language in as JSON</h3>
+				</a>
+				<pre><code><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;</span><span style="color: #EE0000">\n\n\n</span><span style="color: #A31515">French&quot;</span><span style="color: #000000">)</span>
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">french</span><span style="color: #000000"> = {</span>
+<span style="color: #A31515">&quot;single_digits&quot;</span><span style="color: #001080"> :</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;zéro&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;un&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;deux&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;trois&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;quatre&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;cinq&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;six&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;sept&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;huit&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;neuf&quot;</span><span style="color: #000000">],</span>
+<span style="color: #A31515">&quot;teens&quot;</span><span style="color: #001080"> :</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;dix&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;onze&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;douze&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;treize&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;quatorze&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;quinze&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;seize&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;dix-sept&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;dix-huit&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;dix-neuf&quot;</span><span style="color: #000000">],</span>
+<span style="color: #A31515">&quot;double_digits&quot;</span><span style="color: #001080"> :</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;zéro&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;dix&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;vingt&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;trente&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;quarante&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;cinquante&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;soixante&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;soixante-dix&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;quatre-vingts&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;quatre-vingt-dix&quot;</span><span style="color: #000000"> ],</span>
+<span style="color: #A31515">&quot;crore_lakhs&quot;</span><span style="color: #001080"> :</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;cent&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;mille&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;lakh&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;crore&quot;</span><span style="color: #000000">],</span>
+<span style="color: #A31515">&quot;million_billions&quot;</span><span style="color: #001080"> :</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;cent&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;mille&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;million&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;billion&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;billion&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;quadrillion&quot;</span><span style="color: #000000">],</span>
+<span style="color: #A31515">&quot;and_currency&quot;</span><span style="color: #001080"> :</span><span style="color: #000000"> [</span><span style="color: #A31515">&quot;et&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;roupies&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;paise&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;point&quot;</span><span style="color: #000000">]</span>
+<span style="color: #000000">}</span>
+
+<span style="color: #008000">// add your new language to your project</span>
+<span style="color: #001080">curvalue</span><span style="color: #000000">.</span><span style="color: #795E26">addLanguage</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;french&quot;</span><span style="color: #000000">, </span><span style="color: #001080">french</span><span style="color: #000000">);</span>
+</code></pre>
+				<a href="#below-is-the-english-version-use-for-trasalating-in-to-your-language" id="below-is-the-english-version-use-for-trasalating-in-to-your-language" style="color: inherit; text-decoration: none;">
+					<h2>Below is the english version use for trasalating in to your language</h2>
+				</a>
+				<p>Only trasalate array elements.</p>
+				<pre><code><span style="color: #000000">{   </span>
+<span style="color: #000000">        </span><span style="color: #A31515">&quot;single_digits&quot;</span><span style="color: #000000">: [</span><span style="color: #A31515">&quot;zero&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;one&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;two&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;three&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;four&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;five&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;six&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;seven&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;eight&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;nine&quot;</span><span style="color: #000000">],</span>
+<span style="color: #000000">        </span><span style="color: #A31515">&quot;teens&quot;</span><span style="color: #000000">: [</span><span style="color: #A31515">&quot;ten&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;eleven&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;twelve&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;thirteen&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;fourteen&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;fifteen&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;sixteen&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;seventeen&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;eighteen&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;nineteen&quot;</span><span style="color: #000000">],</span>
+<span style="color: #000000">        </span><span style="color: #A31515">&quot;double_digits&quot;</span><span style="color: #000000">: [</span><span style="color: #A31515">&quot;zero&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;ten&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;twenty&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;thirty&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;forty&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;fifty&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;sixty&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;seventy&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;eighty&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;ninety&quot;</span><span style="color: #000000">],</span>
+<span style="color: #000000">        </span><span style="color: #A31515">&quot;crore_lakhs&quot;</span><span style="color: #000000">: [</span><span style="color: #A31515">&quot;hundred&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;thousand&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;lakh&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;crore&quot;</span><span style="color: #000000">],</span>
+<span style="color: #000000">        </span><span style="color: #A31515">&quot;million_billions&quot;</span><span style="color: #000000">: [ </span><span style="color: #A31515">&quot;hundred&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;thousand&quot;</span><span style="color: #000000">,</span><span style="color: #A31515">&quot;million&quot;</span><span style="color: #000000">,</span><span style="color: #A31515">&quot;billion&quot;</span><span style="color: #000000">,</span><span style="color: #A31515">&quot;trillion&quot;</span><span style="color: #000000">,</span><span style="color: #A31515">&quot;quadrillion&quot;</span><span style="color: #000000">],</span>
+<span style="color: #000000">        </span><span style="color: #A31515">&quot;and_currency&quot;</span><span style="color: #000000">: [</span><span style="color: #A31515">&quot;and&quot;</span><span style="color: #000000">,</span><span style="color: #A31515">&quot;rupees&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;paise&quot;</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;point&quot;</span><span style="color: #000000">]</span>
+<span style="color: #000000">    }</span>
+</code></pre>
+				<p>1</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/numbertoword.html" class="tsd-kind-icon">Number<wbr>ToWord</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/lan.html" class="tsd-kind-icon">LAN</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#english" class="tsd-kind-icon">english</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#hindi" class="tsd-kind-icon">hindi</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#kananda" class="tsd-kind-icon">kananda</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#marathi" class="tsd-kind-icon">marathi</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#telagu" class="tsd-kind-icon">telagu</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
