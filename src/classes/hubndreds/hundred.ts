@@ -19,7 +19,7 @@ export default class Hundred implements WORD{
         let hundredindex  = parseInt((_number/100).toString());
         let tenNumber = _number%100;
 
-        ret = hundredindex > 0 ? this._singleDigits.getWord(hundredindex) : "";
+        ret = hundredindex > 0 ? this._singleDigits.getWord(hundredindex) + " hundred" : "";
         ret =  `${ret} ${tenNumber > 0  ? this._hundredLess.getWord(tenNumber) : ""}`
     
         return ret.trim();
