@@ -60,11 +60,12 @@ class NumberToWord{
         let ret="";
         let hundrad = new Hundrad(this._lan)
         let numberArray = this.convertComaSepartedArray(_number,_style);
-      
+    
         let numberStringArray :string[] = numberArray.map((el, i)=>{
+
             let numberWord = hundrad.getWord(parseInt(el));
             let place:string=""
-            if(parseInt(numberWord) === 0){
+            if(parseInt(el) === 0){
                 return "" ;  
             }else{
                 if(_style === "LakhsAndCrore" && i <  numberArray.length-1){

@@ -9,7 +9,7 @@ export default class DoubleDigits implements WORD{
     }
 
     getWord(_number:number):string{
-        let tenindex  = _number/10;
+        let tenindex  = parseInt((_number/10).toString());
         let singleIndex = _number%10;
 
         let ret="";

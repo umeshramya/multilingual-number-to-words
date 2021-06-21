@@ -129,11 +129,10 @@ class NumberToWord {
         let ret = "";
         let hundrad = new hundred_1.default(this._lan);
         let numberArray = this.convertComaSepartedArray(_number, _style);
-        console.log(numberArray);
         let numberStringArray = numberArray.map((el, i) => {
             let numberWord = hundrad.getWord(parseInt(el));
             let place = "";
-            if (parseInt(numberWord) === 0) {
+            if (parseInt(el) === 0) {
                 return "";
             }
             else {
