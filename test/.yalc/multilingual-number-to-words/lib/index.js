@@ -21,12 +21,23 @@ class NumberToWord {
          * @returns string[]
          */
         this.convertComaSepartedArray = (_number, style = "LakhsAndCrore") => {
-            let numberString = `${_number}`;
+            let numberString = _number.toString();
             let ret = "";
-            let hundradpart = numberString.slice(numberString.length - 3, numberString.length);
-            numberString = numberString.slice(0, numberString.length - 3);
+            let hundradpart = "";
+            if (numberString.length <= 3) {
+                hundradpart = numberString.substring(0, numberString.length);
+            }
+            else {
+                hundradpart = numberString.substring(numberString.length - 3);
+            }
+            if (numberString.length > 3) {
+                numberString = numberString.slice(0, numberString.length - 3);
+                numberString = numberString.split("").reverse().join("");
+            }
+            else {
+                numberString = "";
+            }
             let stringArray = [];
-            numberString = numberString.split("").reverse().join("");
             if (numberString.length > 0) {
                 if (style === "MillionAndBillion") {
                     let loop = true;
@@ -104,7 +115,7 @@ class NumberToWord {
         }
         else {
             let hundrad = new hundred_1.default(this._lan);
-            ret = hundrad.getWord(parseInt(_number.toString().substring(0, 2)));
+            ret = hundrad.getWord(parseInt(_number.toString().substring(2, 4)));
         }
         return ret;
     }
@@ -118,6 +129,7 @@ class NumberToWord {
         let ret = "";
         let hundrad = new hundred_1.default(this._lan);
         let numberArray = this.convertComaSepartedArray(_number, _style);
+        console.log(numberArray);
         let numberStringArray = numberArray.map((el, i) => {
             let numberWord = hundrad.getWord(parseInt(el));
             let place = "";

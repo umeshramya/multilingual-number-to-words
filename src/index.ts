@@ -33,7 +33,7 @@ class NumberToWord{
       * @returns decimal in string
       */
      private DecimalNumberWord(_number:number, _decimalStyle:DecimalStyle):string{
-     
+        
          let ret="";
          if(_decimalStyle === "Scientific"){
              let single_digits = new Single(this._lan);
@@ -42,7 +42,7 @@ class NumberToWord{
              })
          }else{
             let hundrad = new Hundrad(this._lan);
-            ret =  hundrad.getWord(parseInt(_number.toString().substring(0, 2)))
+            ret =  hundrad.getWord(parseInt(_number.toString().substring(2, 4)))
              
          }
          return ret;
@@ -56,10 +56,11 @@ class NumberToWord{
       * @returns string
       */
     private WholeNumberWord(_number:number, _style:NumberToWordStyle="LakhsAndCrore"):string{
-
+  
         let ret="";
         let hundrad = new Hundrad(this._lan)
         let numberArray = this.convertComaSepartedArray(_number,_style);
+      
         let numberStringArray :string[] = numberArray.map((el, i)=>{
             let numberWord = hundrad.getWord(parseInt(el));
             let place:string=""
@@ -92,15 +93,24 @@ class NumberToWord{
      * @returns string[]
      */
     private convertComaSepartedArray = (_number:number, style:NumberToWordStyle="LakhsAndCrore"):string[]=>{
-        let numberString = `${_number}`;
+        let numberString = _number.toString()
         let ret = ""
-        let hundradpart = numberString.slice(numberString.length -3, numberString.length)
-        numberString = numberString.slice(0, numberString.length -3);
+        let hundradpart:string=""
+
+        if(numberString.length<=3){
+           hundradpart = numberString.substring(0, numberString.length)
+        }else{
+            hundradpart = numberString.substring(numberString.length-3)            
+        }
+
+        if(numberString.length > 3){
+            numberString = numberString.slice(0, numberString.length -3);
+            numberString = numberString.split("").reverse().join("");
+        }else{
+            numberString = ""
+        }
+        
         let stringArray:string[] =[]
-
-        numberString = numberString.split("").reverse().join("");
- 
-
         if(numberString.length > 0){
 
             if(style === "MillionAndBillion"){
@@ -115,9 +125,7 @@ class NumberToWord{
                        
                     }else{
                         loop = false;
-                    }
-
-                    
+                    }                   
                 }
 
             }else{
@@ -133,9 +141,7 @@ class NumberToWord{
                        
                     }else{
                         loop = false;
-                    }
-
-                    
+                    }                   
                 }
 
             }

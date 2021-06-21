@@ -4,7 +4,7 @@ const {NumberToWord, kananda, english}= require("multilingual-number-to-words")
 
 let n = new NumberToWord(english);
 
-console.log(n.getWord(1004.003,"LakhsAndCrore", "Scientific"));
-console.log(n.convertToComaSeparetedString(1234567890001, "MillionAndBillion"));
-console.log(n.convertToComaSeparetedString(1234567890001 ));
+console.log(n.getWord(1005,"LakhsAndCrore", "Currency"));
+console.log(n.convertToComaSeparetedString(123456789111, "MillionAndBillion"));
+console.log(n.convertToComaSeparetedString(123456789111 ));
 
