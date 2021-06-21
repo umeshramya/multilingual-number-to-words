@@ -1,6 +1,7 @@
 import Hundrad from "./classes/hubndreds/hundred"
 import {english, kananda, telagu, marathi,hindi} from "./config/language"
 import {LAN, NumberToWordStyle, DecimalStyle} from "./config/interfaces"
+import Single from "./classes/hubndreds/singleDigits"
 
 
 
@@ -19,8 +20,32 @@ class NumberToWord{
      */
     getWord(_number:number, _style:NumberToWordStyle="LakhsAndCrore", _decimalStyle: DecimalStyle = "Currency"):string{
         let ret =""
-        ret = this.WholeNumberWord(_number, _style)
+        let wholeNUmber = parseInt(_number.toString())
+        let decimalNumber = _number - wholeNUmber
+        ret = this.WholeNumberWord(wholeNUmber, _style) + " and " + this.DecimalNumberWord(decimalNumber, _decimalStyle)
         return  ret;
+     }
+
+     /**
+      * This converts the decimal number into words
+      * @param _number decimal number
+      * @param _decimalStyle "Currency" | "Scientific"
+      * @returns decimal in string
+      */
+     private DecimalNumberWord(_number:number, _decimalStyle:DecimalStyle):string{
+     
+         let ret="";
+         if(_decimalStyle === "Scientific"){
+             let single_digits = new Single(this._lan);
+             _number.toString().split("").forEach(el=>{
+                 ret = ret + " " + single_digits.getWord(parseInt(el))
+             })
+         }else{
+            let hundrad = new Hundrad(this._lan);
+            ret =  hundrad.getWord(parseInt(_number.toString().substring(0, 2)))
+             
+         }
+         return ret;
      }
 
 
@@ -59,7 +84,7 @@ class NumberToWord{
         return ret;
     }
 
-    
+
     /**
      * This function converts number into comaseparted string array
      * @param _number  "LakhsAndCrore" | "MillionAndBillion"
