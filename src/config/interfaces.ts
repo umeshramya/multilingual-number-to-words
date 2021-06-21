@@ -3,6 +3,7 @@ type string_array_4 = [string, string, string, string]
 type string_array_6 = [string, string, string, string, string, string]
 
 type NumberToWordStyle = "LakhsAndCrore" | "MillionAndBillion"
+type DecimalStyle = "Currency" | "Scientific"
 
 
 
@@ -26,4 +27,4 @@ interface WORD{
 
 
 export {LAN, WORD}
-export type {NumberToWordStyle}
+export type {NumberToWordStyle, DecimalStyle}
