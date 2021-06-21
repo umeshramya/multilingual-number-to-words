@@ -1,6 +1,6 @@
 import Hundrad from "./classes/hubndreds/hundred"
 import {english, kananda, telagu, marathi,hindi} from "./config/language"
-import {LAN, NumberToWordStyle} from "./config/interfaces"
+import {LAN, NumberToWordStyle, DecimalStyle} from "./config/interfaces"
 
 
 
@@ -10,7 +10,27 @@ class NumberToWord{
         this._lan = lan
     }
 
-    getWord(_number:number, _style:NumberToWordStyle="LakhsAndCrore"):string{
+    /**
+     * This function returns the number to word
+     * @param _number Number
+     * @param _style "LakhsAndCrore" | "MillionAndBillion"
+     * @param _decimalStyle "Currency" | "Scientific"
+     * @returns string
+     */
+    getWord(_number:number, _style:NumberToWordStyle="LakhsAndCrore", _decimalStyle: DecimalStyle = "Currency"):string{
+        let ret =""
+        ret = this.WholeNumberWord(_number, _style)
+        return  ret;
+     }
+
+
+     /**
+      * This retuen whole number  in words
+      * @param _number 
+      * @param _style "LakhsAndCrore" | "MillionAndBillion"
+      * @returns string
+      */
+    private WholeNumberWord(_number:number, _style:NumberToWordStyle="LakhsAndCrore"):string{
 
         let ret="";
         let hundrad = new Hundrad(this._lan)
@@ -38,6 +58,8 @@ class NumberToWord{
         
         return ret;
     }
+
+    
     /**
      * This function converts number into comaseparted string array
      * @param _number  "LakhsAndCrore" | "MillionAndBillion"

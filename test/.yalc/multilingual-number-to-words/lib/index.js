@@ -73,21 +73,43 @@ class NumberToWord {
         };
         this._lan = lan;
     }
-    getWord(_number, _style = "LakhsAndCrore") {
+    /**
+     * This function returns the number to word
+     * @param _number Number
+     * @param _style "LakhsAndCrore" | "MillionAndBillion"
+     * @param _decimalStyle "Currency" | "Scientific"
+     * @returns string
+     */
+    getWord(_number, _style = "LakhsAndCrore", _decimalStyle = "Currency") {
+        let ret = "";
+        ret = this.WholeNumberWord(_number, _style);
+        return ret;
+    }
+    /**
+     * This retuen whole number  in words
+     * @param _number
+     * @param _style "LakhsAndCrore" | "MillionAndBillion"
+     * @returns string
+     */
+    WholeNumberWord(_number, _style = "LakhsAndCrore") {
         let ret = "";
         let hundrad = new hundred_1.default(this._lan);
         let numberArray = this.convertComaSepartedArray(_number, _style);
-        console.log(numberArray);
         let numberStringArray = numberArray.map((el, i) => {
             let numberWord = hundrad.getWord(parseInt(el));
             let place = "";
-            if (_style === "LakhsAndCrore" && i < numberArray.length - 1) {
-                place = this._lan.crore_lakhs[numberArray.length - 1 - i];
+            if (parseInt(numberWord) === 0) {
+                return "";
             }
-            else if (_style === "MillionAndBillion" && i < numberArray.length - 1) {
-                place = this._lan.million_billions[numberArray.length - 1 - i];
+            else {
+                if (_style === "LakhsAndCrore" && i < numberArray.length - 1) {
+                    place = this._lan.crore_lakhs[numberArray.length - 1 - i];
+                }
+                else if (_style === "MillionAndBillion" && i < numberArray.length - 1) {
+                    place = this._lan.million_billions[numberArray.length - 1 - i];
+                }
+                return `${numberWord} ${place}`;
             }
-            return `${numberWord} ${place}`;
         });
         numberStringArray.forEach(el => {
             ret = ret + " " + el;
