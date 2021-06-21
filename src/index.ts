@@ -15,19 +15,22 @@ class NumberToWord{
         let ret="";
         let hundrad = new Hundrad(this._lan)
         let numberArray = this.convertComaSepartedArray(_number,_style);
-        console.log(numberArray)
         let numberStringArray :string[] = numberArray.map((el, i)=>{
             let numberWord = hundrad.getWord(parseInt(el));
             let place:string=""
+            if(parseInt(numberWord) === 0){
+                return "" ;  
+            }else{
+                if(_style === "LakhsAndCrore" && i <  numberArray.length-1){
+                    place =  this._lan.crore_lakhs[numberArray.length-1 - i]
+                    
+                  }else if(_style === "MillionAndBillion" && i <  numberArray.length-1){
+                      place = this._lan.million_billions[numberArray.length -1 - i]
+                  }
+                  return `${numberWord} ${place}`;
 
-
-            if(_style === "LakhsAndCrore" && i <  numberArray.length-1){
-              place =  this._lan.crore_lakhs[numberArray.length-1 - i]
-              
-            }else if(_style === "MillionAndBillion" && i <  numberArray.length-1){
-                place = this._lan.million_billions[numberArray.length -1 - i]
             }
-            return `${numberWord} ${place}`;
+
         })
         numberStringArray.forEach(el=>{
             ret = ret + " " + el;
