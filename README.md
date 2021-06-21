@@ -63,10 +63,11 @@ Only trasalate array elements.
 {   
         "single_digits": ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"],
         "teens": ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"],
-        "double_digits": ["zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"],
+  g      "double_digits": ["zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"],
         "crore_lakhs": ["hundred", "thousand", "lakh", "crore"],
         "million_billions": [ "hundred", "thousand","million","billion","trillion","quadrillion"],
         "and_currency": ["and","rupees", "paise", "point"]
     }
 ```
-1
+
+## To do
