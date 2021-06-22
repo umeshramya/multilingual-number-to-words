@@ -34,6 +34,12 @@ class NumberToWord extends numberToWordHandle_1.default {
      */
     getWord(_number, _style = "LakhsAndCrore", _decimalStyle = "Currency") {
         let ret = "";
+        if (_style === "MillionAndBillion" && _number > 999999999999998) {
+            throw new Error().message = "large Number :- less than 999999999999998 allowed";
+        }
+        else if (_style === "LakhsAndCrore" && _number > 999999998) {
+            throw new Error().message = "large Number :- less than 999999998 allowed";
+        }
         let wholeNUmber = parseInt(_number.toString());
         ret = this.WholeNumberWord(wholeNUmber, this._lan, _style);
         let decimalLength = _number.toString().substring(wholeNUmber.toString().length - 1).length;
