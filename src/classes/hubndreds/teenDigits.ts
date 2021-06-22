@@ -13,6 +13,6 @@ export default class TeenDigits implements WORD{
             ret = this._lan.teens[curIndex];
         }
        
-        return ret;
+        return ret.trim();
     }
 }

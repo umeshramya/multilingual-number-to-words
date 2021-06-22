@@ -6,7 +6,7 @@ export default class NumberToWordHandle {
      * @param _decimalStyle "Currency" | "Scientific"
      * @returns decimal in string
      */
-    protected DecimalNumberWord(_number: number, _decimalStyle: DecimalStyle, lan: LAN): string;
+    protected DecimalNumberWord(_number: string, _decimalStyle: DecimalStyle, lan: LAN): string;
     /**
      * This retuen whole number  in words
      * @param _number

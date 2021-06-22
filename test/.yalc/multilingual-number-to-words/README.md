@@ -1,5 +1,5 @@
 # multilingual-number-to-words
-![verson](https://img.shields.io/badge/version-5.0.3-green.svg)
+![verson](https://img.shields.io/badge/version-6.0.0-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellowgreen.svg)
 
 This converts to number in to words. one can get words written in any language. users can add there own language if not included. It also gives numbers in comma separated fashion. one can get results for both lakhs-crore and also in million-billion format
@@ -24,25 +24,20 @@ use this command to include as a node module
 ###### Note maximum number for crore and lakh conversion is 999999998
 ###### Note maximum number for million and billion conversions is 999999999999998
 
-```
-var curValue = require("multilingual-number-to-words");
+```javascript
+const {NumberToWord, kananda, english}= require("multilingual-number-to-words")
 
-var Num = 9873767.78;
-curValue.lakhWord(Num); //return words in lakh crore in english
-curValue.millionWord(Num); //return words millio in english
+let n = new NumberToWord(english);
 
-// in hindi, kananada, telagu, marati
-curValue.lakhWord(Num, "hindi"); //return words in lakh crore in hindi
-curValue.millionWord(Num, "hindi"); //return words millio in hindi
-
-curValue.lakhComma(Num) // return number by comma spartation lakh and crore format
-curValue.millonComma(Num) // return number by comma spartation million and billion format
+console.log(n.getWord( 123456789111.04,"MillionAndBillion", "Currency"));
+console.log(n.convertToComaSeparetedString(123456789111, "MillionAndBillion"));
+console.log(n.convertToComaSeparetedString(123456789111 ));
 
 ```
 
 
 ### Use your own language in as JSON
-```
+```javascript
 console.log("\n\n\nFrench")
 let french = {
 "single_digits" : ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"],
@@ -54,12 +49,12 @@ let french = {
 }
 
 // add your new language to your project
-curvalue.addLanguage("french", french);
+let n = new NumberToWord(french);
 ```
 
 ## Below is the english version use for trasalating in to your language
 Only trasalate array elements.
-```
+```javascript
 {   
         "single_digits": ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"],
         "teens": ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"],
@@ -70,5 +65,4 @@ Only trasalate array elements.
     }
 ```
 
-## To do
-Complete Hundred class
+
