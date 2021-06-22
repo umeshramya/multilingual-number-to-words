@@ -14,7 +14,7 @@ export default class Single implements WORD{
         if (curIndex >=0 && curIndex < 10){
             ret= this._lan.single_digits[curIndex]
         }
-        return ret;
+        return ret.trim();
         
     }
 

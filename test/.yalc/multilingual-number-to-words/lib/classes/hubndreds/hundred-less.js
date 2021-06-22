@@ -27,7 +27,7 @@ class HundredLess {
         else {
             ret = this._double_digits.getWord(_number);
         }
-        return ret;
+        return ret.trim();
     }
 }
 exports.default = HundredLess;

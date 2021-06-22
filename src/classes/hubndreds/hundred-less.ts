@@ -33,7 +33,7 @@ export default class HundredLess implements WORD{
         
 
       
-        return ret;
+        return ret.trim();
     }
 
     

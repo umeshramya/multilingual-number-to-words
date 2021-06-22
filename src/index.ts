@@ -23,9 +23,9 @@ class NumberToWord extends NumberToWordHandle{
         let wholeNUmber = parseInt(_number.toString())
         ret = this.WholeNumberWord(wholeNUmber,this._lan, _style);
         let decimalLength = _number.toString().substring(wholeNUmber.toString().length -1).length
-        if(decimalLength > 0){
+        if(decimalLength > 1 ){
         let decimalNumber = (_number - wholeNUmber).toFixed(decimalLength-2).substring(2)
-            ret = ret + " and " + this.DecimalNumberWord(decimalNumber, _decimalStyle,this._lan)
+            ret = ret + "and " + this.DecimalNumberWord(decimalNumber, _decimalStyle,this._lan)
         }
         
         return  ret;

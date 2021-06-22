@@ -20,6 +20,6 @@ export default class DoubleDigits implements WORD{
         if(singleIndex > 0 && singleIndex < 10){
             ret = ret + " "  + new Single(this._lan).getWord(singleIndex)
         }
-        return   ret;
+        return   ret.trim();
     }
 }

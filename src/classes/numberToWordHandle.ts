@@ -25,7 +25,7 @@ export default class NumberToWordHandle{
            ret =  hundrad.getWord(parseInt(_number.toString().substring(0, 2)))
             
         }
-        return ret;
+        return ret.trim();
     }
 
 
