@@ -12,6 +12,13 @@ declare class NumberToWord {
      */
     getWord(_number: number, _style?: NumberToWordStyle, _decimalStyle?: DecimalStyle): string;
     /**
+     * This converts the decimal number into words
+     * @param _number decimal number
+     * @param _decimalStyle "Currency" | "Scientific"
+     * @returns decimal in string
+     */
+    private DecimalNumberWord;
+    /**
      * This retuen whole number  in words
      * @param _number
      * @param _style "LakhsAndCrore" | "MillionAndBillion"

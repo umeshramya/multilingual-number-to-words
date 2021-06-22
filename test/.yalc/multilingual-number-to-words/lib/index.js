@@ -11,6 +11,7 @@ Object.defineProperty(exports, "kananda", { enumerable: true, get: function () {
 Object.defineProperty(exports, "telagu", { enumerable: true, get: function () { return language_1.telagu; } });
 Object.defineProperty(exports, "marathi", { enumerable: true, get: function () { return language_1.marathi; } });
 Object.defineProperty(exports, "hindi", { enumerable: true, get: function () { return language_1.hindi; } });
+const singleDigits_1 = __importDefault(require("./classes/hubndreds/singleDigits"));
 class NumberToWord {
     constructor(lan = language_1.english) {
         /**
@@ -20,12 +21,23 @@ class NumberToWord {
          * @returns string[]
          */
         this.convertComaSepartedArray = (_number, style = "LakhsAndCrore") => {
-            let numberString = `${_number}`;
+            let numberString = _number.toString();
             let ret = "";
-            let hundradpart = numberString.slice(numberString.length - 3, numberString.length);
-            numberString = numberString.slice(0, numberString.length - 3);
+            let hundradpart = "";
+            if (numberString.length <= 3) {
+                hundradpart = numberString.substring(0, numberString.length);
+            }
+            else {
+                hundradpart = numberString.substring(numberString.length - 3);
+            }
+            if (numberString.length > 3) {
+                numberString = numberString.slice(0, numberString.length - 3);
+                numberString = numberString.split("").reverse().join("");
+            }
+            else {
+                numberString = "";
+            }
             let stringArray = [];
-            numberString = numberString.split("").reverse().join("");
             if (numberString.length > 0) {
                 if (style === "MillionAndBillion") {
                     let loop = true;
@@ -82,7 +94,29 @@ class NumberToWord {
      */
     getWord(_number, _style = "LakhsAndCrore", _decimalStyle = "Currency") {
         let ret = "";
-        ret = this.WholeNumberWord(_number, _style);
+        let wholeNUmber = parseInt(_number.toString());
+        let decimalNumber = _number - wholeNUmber;
+        ret = this.WholeNumberWord(wholeNUmber, _style) + " and " + this.DecimalNumberWord(decimalNumber, _decimalStyle);
+        return ret;
+    }
+    /**
+     * This converts the decimal number into words
+     * @param _number decimal number
+     * @param _decimalStyle "Currency" | "Scientific"
+     * @returns decimal in string
+     */
+    DecimalNumberWord(_number, _decimalStyle) {
+        let ret = "";
+        if (_decimalStyle === "Scientific") {
+            let single_digits = new singleDigits_1.default(this._lan);
+            _number.toString().split("").forEach(el => {
+                ret = ret + " " + single_digits.getWord(parseInt(el));
+            });
+        }
+        else {
+            let hundrad = new hundred_1.default(this._lan);
+            ret = hundrad.getWord(parseInt(_number.toString().substring(2, 4)));
+        }
         return ret;
     }
     /**
@@ -98,7 +132,7 @@ class NumberToWord {
         let numberStringArray = numberArray.map((el, i) => {
             let numberWord = hundrad.getWord(parseInt(el));
             let place = "";
-            if (parseInt(numberWord) === 0) {
+            if (parseInt(el) === 0) {
                 return "";
             }
             else {

@@ -1,6 +1,7 @@
 import Hundrad from "./classes/hubndreds/hundred"
 import {english, kananda, telagu, marathi,hindi} from "./config/language"
 import {LAN, NumberToWordStyle, DecimalStyle} from "./config/interfaces"
+import Single from "./classes/hubndreds/singleDigits"
 
 
 
@@ -19,8 +20,32 @@ class NumberToWord{
      */
     getWord(_number:number, _style:NumberToWordStyle="LakhsAndCrore", _decimalStyle: DecimalStyle = "Currency"):string{
         let ret =""
-        ret = this.WholeNumberWord(_number, _style)
+        let wholeNUmber = parseInt(_number.toString())
+        let decimalNumber = _number - wholeNUmber
+        ret = this.WholeNumberWord(wholeNUmber, _style) + " and " + this.DecimalNumberWord(decimalNumber, _decimalStyle)
         return  ret;
+     }
+
+     /**
+      * This converts the decimal number into words
+      * @param _number decimal number
+      * @param _decimalStyle "Currency" | "Scientific"
+      * @returns decimal in string
+      */
+     private DecimalNumberWord(_number:number, _decimalStyle:DecimalStyle):string{
+        
+         let ret="";
+         if(_decimalStyle === "Scientific"){
+             let single_digits = new Single(this._lan);
+             _number.toString().split("").forEach(el=>{
+                 ret = ret + " " + single_digits.getWord(parseInt(el))
+             })
+         }else{
+            let hundrad = new Hundrad(this._lan);
+            ret =  hundrad.getWord(parseInt(_number.toString().substring(2, 4)))
+             
+         }
+         return ret;
      }
 
 
@@ -31,14 +56,16 @@ class NumberToWord{
       * @returns string
       */
     private WholeNumberWord(_number:number, _style:NumberToWordStyle="LakhsAndCrore"):string{
-
+  
         let ret="";
         let hundrad = new Hundrad(this._lan)
         let numberArray = this.convertComaSepartedArray(_number,_style);
+    
         let numberStringArray :string[] = numberArray.map((el, i)=>{
+
             let numberWord = hundrad.getWord(parseInt(el));
             let place:string=""
-            if(parseInt(numberWord) === 0){
+            if(parseInt(el) === 0){
                 return "" ;  
             }else{
                 if(_style === "LakhsAndCrore" && i <  numberArray.length-1){
@@ -59,7 +86,7 @@ class NumberToWord{
         return ret;
     }
 
-    
+
     /**
      * This function converts number into comaseparted string array
      * @param _number  "LakhsAndCrore" | "MillionAndBillion"
@@ -67,15 +94,24 @@ class NumberToWord{
      * @returns string[]
      */
     private convertComaSepartedArray = (_number:number, style:NumberToWordStyle="LakhsAndCrore"):string[]=>{
-        let numberString = `${_number}`;
+        let numberString = _number.toString()
         let ret = ""
-        let hundradpart = numberString.slice(numberString.length -3, numberString.length)
-        numberString = numberString.slice(0, numberString.length -3);
+        let hundradpart:string=""
+
+        if(numberString.length<=3){
+           hundradpart = numberString.substring(0, numberString.length)
+        }else{
+            hundradpart = numberString.substring(numberString.length-3)            
+        }
+
+        if(numberString.length > 3){
+            numberString = numberString.slice(0, numberString.length -3);
+            numberString = numberString.split("").reverse().join("");
+        }else{
+            numberString = ""
+        }
+        
         let stringArray:string[] =[]
-
-        numberString = numberString.split("").reverse().join("");
- 
-
         if(numberString.length > 0){
 
             if(style === "MillionAndBillion"){
@@ -90,9 +126,7 @@ class NumberToWord{
                        
                     }else{
                         loop = false;
-                    }
-
-                    
+                    }                   
                 }
 
             }else{
@@ -108,9 +142,7 @@ class NumberToWord{
                        
                     }else{
                         loop = false;
-                    }
-
-                    
+                    }                   
                 }
 
             }
