@@ -1,5 +1,5 @@
 # multilingual-number-to-words
-![verson](https://img.shields.io/badge/version-6.0.0-green.svg)
+![verson](https://img.shields.io/badge/version-6.0.1-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellowgreen.svg)
 
 
@@ -21,20 +21,20 @@ use this command to include as a node module
 ###### npm i multilingual-number-to-words
 
 ## Features
-1. Index file contains the code and language file contains JSON of languages
-2. Decimal value truncated to two degits
+1. Decimal value truncated to two degits
 
 ###### Note maximum number for crore and lakh conversion is 999999998
 ###### Note maximum number for million and billion conversions is 999999999999998
 
 ```javascript
-const {NumberToWord, kananda, english}= require("multilingual-number-to-words")
+const {NumberToWord, kananda, english, telagu, marathi}= require("multilingual-number-to-words")
 
 let n = new NumberToWord(english);
 
 console.log(n.getWord( 123456789111.04,"MillionAndBillion", "Currency"));
 console.log(n.convertToComaSeparetedString(123456789111, "MillionAndBillion"));
 console.log(n.convertToComaSeparetedString(123456789111 ));
+
 
 ```
 

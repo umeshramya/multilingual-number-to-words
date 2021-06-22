@@ -1,4 +1,4 @@
-const {NumberToWord, kananda, english}= require("multilingual-number-to-words")
+const {NumberToWord, kananda, english, telagu, marathi,}= require("multilingual-number-to-words")
 
 
 
