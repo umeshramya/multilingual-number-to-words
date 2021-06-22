@@ -21,8 +21,13 @@ class NumberToWord extends NumberToWordHandle{
     getWord(_number:number, _style:NumberToWordStyle="LakhsAndCrore", _decimalStyle: DecimalStyle = "Currency"):string{
         let ret =""
         let wholeNUmber = parseInt(_number.toString())
-        let decimalNumber = _number - wholeNUmber
-        ret = this.WholeNumberWord(wholeNUmber,this._lan, _style) + " and " + this.DecimalNumberWord(decimalNumber, _decimalStyle,this._lan)
+        ret = this.WholeNumberWord(wholeNUmber,this._lan, _style);
+        let decimalLength = _number.toString().substring(wholeNUmber.toString().length -1).length
+        if(decimalLength > 0){
+        let decimalNumber = (_number - wholeNUmber).toFixed(decimalLength-2).substring(2)
+            ret = ret + " and " + this.DecimalNumberWord(decimalNumber, _decimalStyle,this._lan)
+        }
+        
         return  ret;
      }
 

@@ -11,9 +11,10 @@ export default class NumberToWordHandle{
       * @param _decimalStyle "Currency" | "Scientific"
       * @returns decimal in string
       */
-      protected DecimalNumberWord(_number:number, _decimalStyle:DecimalStyle, lan:LAN):string{
-        
+      protected DecimalNumberWord(_number:string, _decimalStyle:DecimalStyle, lan:LAN):string{
+
         let ret="";
+
         if(_decimalStyle === "Scientific"){
             let single_digits = new Single(lan);
             _number.toString().split("").forEach(el=>{
@@ -21,7 +22,7 @@ export default class NumberToWordHandle{
             })
         }else{
            let hundrad = new Hundred(lan)
-           ret =  hundrad.getWord(parseInt(_number.toString().substring(2, 4)))
+           ret =  hundrad.getWord(parseInt(_number.toString().substring(0, 2)))
             
         }
         return ret;

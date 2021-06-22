@@ -84,7 +84,7 @@ class NumberToWordHandle {
         }
         else {
             let hundrad = new hundred_1.default(lan);
-            ret = hundrad.getWord(parseInt(_number.toString().substring(2, 4)));
+            ret = hundrad.getWord(parseInt(_number.toString().substring(0, 2)));
         }
         return ret;
     }
