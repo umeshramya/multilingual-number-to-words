@@ -2,7 +2,10 @@
 ![verson](https://img.shields.io/badge/version-6.0.0-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellowgreen.svg)
 
-This converts to number in to words. one can get words written in any language. users can add there own language if not included. It also gives numbers in comma separated fashion. one can get results for both lakhs-crore and also in million-billion format
+
+This converts to numbers to words. one can get words written in any language. users can add there own language if not included. It also gives numbers in comma separated fashion. one can get results for both lakhs-crore and also in million-billion format
+
+Decimal can be diplayed in currency style or scientfic or mathmetical style
 
 
 As of now Version 3.0.0 following languages are included in this project
