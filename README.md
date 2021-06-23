@@ -1,27 +1,27 @@
 # multilingual-number-to-words
-![verson](https://img.shields.io/badge/version-6.0.1-green.svg)
+![verson](https://img.shields.io/badge/version-6.0.2-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellowgreen.svg)
 
 
-This converts to numbers to words. one can get words written in any language. users can add there own language if not included. It also gives numbers in comma separated fashion. one can get results for both lakhs-crore and also in million-billion format
+This converts to numbers to words. one can get words written in any language. Users can add there own language if not included. It also gives numbers in comma separated fashion. one can get results for both lakhs-crore and also in million-billion format
 
-Decimal can be diplayed in currency style or scientfic or mathmetical style
+Decimal can be diplayed in currency style or scientfic-mathmetical style
 
 
-As of now Version 3.0.0 following languages are included in this project
+Followig are the language included in this project
 1. english (default)
 2. kananda
 3. hindi
 4. telagu
 5. marathi
-##### To add languages to this module kindly read below
+
 
 ## How to use
 use this command to include as a node module
 ###### npm i multilingual-number-to-words
 
 ## Features
-1. Decimal value truncated to two degits
+1. Decimal value truncated to two degits for currency style
 
 ###### Note maximum number for crore and lakh conversion is 999999998
 ###### Note maximum number for million and billion conversions is 999999999999998

@@ -1,5 +1,5 @@
 # multilingual-number-to-words
-![verson](https://img.shields.io/badge/version-6.0.0-green.svg)
+![verson](https://img.shields.io/badge/version-6.0.1-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellowgreen.svg)
 
 

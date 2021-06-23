@@ -1,6 +1,6 @@
 {
   "name": "multilingual-number-to-words",
-  "version": "6.0.1+09cca0ff",
+  "version": "6.0.1+56c9334e",
   "description": "Converts to number in to words. one can get words written in any language. users can add there own language if not included",
   "main": "lib/index.js",
   "scripts": {
@@ -25,5 +25,5 @@
   "files": [
     "lib/**/*"
   ],
-  "yalcSig": "09cca0ff446cc91caaa2232b3ccf2902"
+  "yalcSig": "56c9334e40d086da71921f25c99bcbba"
 }
