@@ -2,11 +2,9 @@
 ![verson](https://img.shields.io/badge/version-6.0.2-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellowgreen.svg)
 
-
 This converts to numbers to words. one can get words written in any language. Users can add there own language if not included. It also gives numbers in comma separated fashion. one can get results for both lakhs-crore and also in million-billion format
 
 Decimal can be diplayed in currency style or scientfic-mathmetical style
-
 
 Followig are the language included in this project
 1. english (default)
@@ -21,7 +19,9 @@ use this command to include as a node module
 ###### npm i multilingual-number-to-words
 
 ## Features
-1. Decimal value truncated to two degits for currency style
+1. Converts to number provided into words both in Lakhs-core or million-billion format
+2. Decimal value truncated to two degits for currency style
+3. One also get number provided in comma separeted format
 
 ###### Note maximum number for crore and lakh conversion is 999999998
 ###### Note maximum number for million and billion conversions is 999999999999998
